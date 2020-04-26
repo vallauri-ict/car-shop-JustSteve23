@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfVeicolo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <veicolo xsi:type="moto">
+    <Marca>Ducati</Marca>
+    <Modello>Panigale V4R</Modello>
+    <Cilindrata>1000</Cilindrata>
+    <PotenzaKw>75</PotenzaKw>
+    <Immatricolazione>2020-04-24T08:41:03.1646009+02:00</Immatricolazione>
+    <KmPercorsi>0</KmPercorsi>
+    <Colore>blu</Colore>
+    <IsUsato>false</IsUsato>
+    <IsKmZero>false</IsKmZero>
+    <Prezzo>10000</Prezzo>
+    <MarcaSella>StandarCO</MarcaSella>
+  </veicolo>
+  <veicolo xsi:type="auto">
+    <Marca>Alfa Romeo</Marca>
+    <Modello>Stelvio</Modello>
+    <Cilindrata>2000</Cilindrata>
+    <PotenzaKw>150</PotenzaKw>
+    <Immatricolazione>2020-04-24T08:41:03.2273555+02:00</Immatricolazione>
+    <KmPercorsi>0</KmPercorsi>
+    <Colore>rosso</Colore>
+    <IsUsato>false</IsUsato>
+    <IsKmZero>false</IsKmZero>
+    <Prezzo>35000</Prezzo>
+    <NumairBag>8</NumairBag>
+  </veicolo>
+  <veicolo xsi:type="auto">
+    <Marca>Ferrari</Marca>
+    <Modello>SF90Stradale</Modello>
+    <Cilindrata>5000</Cilindrata>
+    <PotenzaKw>800</PotenzaKw>
+    <Immatricolazione>2020-04-24T08:41:03.2273555+02:00</Immatricolazione>
+    <KmPercorsi>0</KmPercorsi>
+    <Colore>rosso</Colore>
+    <IsUsato>false</IsUsato>
+    <IsKmZero>false</IsKmZero>
+    <Prezzo>500000</Prezzo>
+    <NumairBag>12</NumairBag>
+  </veicolo>
+  <veicolo xsi:type="auto">
+    <Marca>Bentley</Marca>
+    <Modello>Continental GT</Modello>
+    <Cilindrata>3500</Cilindrata>
+    <PotenzaKw>600</PotenzaKw>
+    <Immatricolazione>2020-04-24T08:41:03.2273555+02:00</Immatricolazione>
+    <KmPercorsi>0</KmPercorsi>
+    <Colore>nero</Colore>
+    <IsUsato>false</IsUsato>
+    <IsKmZero>false</IsKmZero>
+    <Prezzo>200000</Prezzo>
+    <NumairBag>14</NumairBag>
+  </veicolo>
+  <veicolo xsi:type="moto">
+    <Marca>Yamaha</Marca>
+    <Modello>R1</Modello>
+    <Cilindrata>1000</Cilindrata>
+    <PotenzaKw>75</PotenzaKw>
+    <Immatricolazione>2020-04-24T08:41:03.2273555+02:00</Immatricolazione>
+    <KmPercorsi>0</KmPercorsi>
+    <Colore>blu</Colore>
+    <IsUsato>false</IsUsato>
+    <IsKmZero>false</IsKmZero>
+    <Prezzo>8500</Prezzo>
+    <MarcaSella>StandardCO</MarcaSella>
+  </veicolo>
+  <veicolo xsi:type="auto">
+    <Marca>BMW</Marca>
+    <Modello>M2 Competizione</Modello>
+    <Cilindrata>3000</Cilindrata>
+    <PotenzaKw>450</PotenzaKw>
+    <Immatricolazione>2020-04-24T08:41:03.2273555+02:00</Immatricolazione>
+    <KmPercorsi>0</KmPercorsi>
+    <Colore>bianco</Colore>
+    <IsUsato>false</IsUsato>
+    <IsKmZero>false</IsKmZero>
+    <Prezzo>66000</Prezzo>
+    <NumairBag>10</NumairBag>
+  </veicolo>
+  <veicolo xsi:type="auto">
+    <Marca>BMW</Marca>
+    <Modello>Z4</Modello>
+    <Cilindrata>3500</Cilindrata>
+    <PotenzaKw>200</PotenzaKw>
+    <Immatricolazione>2020-04-24T08:41:11.5867159+02:00</Immatricolazione>
+    <KmPercorsi>0</KmPercorsi>
+    <Colore>Blu</Colore>
+    <IsUsato>false</IsUsato>
+    <IsKmZero>false</IsKmZero>
+    <Prezzo>50000</Prezzo>
+    <NumairBag>10</NumairBag>
+  </veicolo>
+</ArrayOfVeicolo>
