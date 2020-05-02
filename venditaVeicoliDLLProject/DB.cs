@@ -99,7 +99,14 @@ namespace venditaVeicoliDLLProject
 
                     switch (nf)
                     {
-                        case 0: ausS= toUpdate; fl = 2; break;
+                        case 0:
+                            if (toUpdate=="auto" || toUpdate=="moto") {
+                                ausS = toUpdate; fl = 2; }
+                            else {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                return "!!ERROR VALORI VALIDI-> auto/moto!!\n";
+                            }
+                            break;
                         case 1: ausS = toUpdate; fl = 2; break;
                         case 2: ausS = toUpdate; fl = 2; break;
                         case 3:
@@ -122,8 +129,27 @@ namespace venditaVeicoliDLLProject
                                 return "!!ERROR!!\n" +ex.Message;} break;
                         case 6: ausI = int.Parse(toUpdate); fl = 1; break;
                         case 7: ausS = toUpdate; fl = 2; break;
-                        case 8: ausS = toUpdate; fl = 2; break;
-                        case 9: ausS = toUpdate; fl = 2; break;
+                        case 8:
+                            if (toUpdate=="SI" || toUpdate=="NO") {
+                                ausS = toUpdate; fl = 2; 
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                return "!!ERROR VALORI VALIDI-> SI/NO!!\n";
+                            }
+                            break;
+                        case 9:
+                            if (toUpdate == "SI" || toUpdate == "NO")
+                            {
+                                ausS = toUpdate; fl = 2;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                return "!!ERROR VALORI VALIDI-> SI/NO!!\n";
+                            }
+                            break;
                         case 10: ausS = toUpdate; fl = 2; break;
                         case 11: try { ausI = int.Parse(toUpdate); fl = 1; }
                             catch (Exception ex)
@@ -223,11 +249,9 @@ namespace venditaVeicoliDLLProject
                         OleDbCommand command = new OleDbCommand();
                         command.Connection = connection;
 
-                        string SQLquery = "DELETE FROM veicoli WHERE id=@id;";
+                        string SQLquery = $"DELETE FROM veicoli WHERE id={id};";
                         command.CommandText = SQLquery;
-                        var parameter = new OleDbParameter("@id", OleDbType.Integer);
-                        parameter.Value = id;
-                        command.Parameters.Add(parameter);
+
                         command.Prepare();
                         command.ExecuteNonQuery();
                         Console.ForegroundColor = ConsoleColor.Green;
