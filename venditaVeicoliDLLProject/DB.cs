@@ -80,6 +80,95 @@ namespace venditaVeicoliDLLProject
             }
         }
 
+        public static string updateVehicle(string connectionStr, string id, string uField, string toUpdate,int nf)
+        {
+            if (connectionStr!=null)
+            {
+                OleDbConnection connection = new OleDbConnection(connectionStr);
+                using (connection)
+                {
+                    connection.Open();
+                    OleDbCommand command = new OleDbCommand();
+                    command.Connection=connection;
+
+                    int ausI=0;
+                    string ausS=null;
+                    DateTime ausDT=Convert.ToDateTime("01/01/1900");
+                    double ausD = 0;
+                    int fl=0;
+
+                    switch (nf)
+                    {
+                        case 0: ausS= toUpdate; fl = 2; break;
+                        case 1: ausS = toUpdate; fl = 2; break;
+                        case 2: ausS = toUpdate; fl = 2; break;
+                        case 3:
+                            try { ausI = int.Parse(toUpdate); fl = 1; }
+                            catch (Exception ex)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                return "!!ERROR!!\n" + ex.Message;
+                            }
+                            break;
+                        case 4: try { ausD = double.Parse(toUpdate); fl = 4; }
+                            catch (Exception ex) {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                return "!!ERROR!!\n" + ex.Message;
+                            }
+                            break;
+                        case 5: try { ausDT = Convert.ToDateTime(toUpdate); fl = 3; } 
+                            catch (Exception ex) {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                return "!!ERROR!!\n" +ex.Message;} break;
+                        case 6: ausI = int.Parse(toUpdate); fl = 1; break;
+                        case 7: ausS = toUpdate; fl = 2; break;
+                        case 8: ausS = toUpdate; fl = 2; break;
+                        case 9: ausS = toUpdate; fl = 2; break;
+                        case 10: ausS = toUpdate; fl = 2; break;
+                        case 11: try { ausI = int.Parse(toUpdate); fl = 1; }
+                            catch (Exception ex)
+                            {Console.ForegroundColor = ConsoleColor.Red;
+                                return "!!ERROR!!\n" + ex.Message;}break;
+                    }
+
+                    string SQLquery;
+                    if (fl==0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        return "\n!!ERROR!!";
+                    }
+                    else if (fl == 1)
+                    {
+                        SQLquery = $"UPDATE veicoli SET {uField}={ausI} WHERE id={id};";
+                    }
+                    else if (fl == 2)
+                    {
+                        SQLquery = $"UPDATE veicoli SET {uField}='{ausS}' WHERE id={id};";
+                    }
+                    else if(fl==3)
+                    {
+                        SQLquery = $"UPDATE veicoli SET {uField}=#{ausDT}# WHERE id={id};";
+                    }
+                    else
+                    {
+                        SQLquery = $"UPDATE veicoli SET {uField}={ausD} WHERE id={id};";
+                    }
+
+                    command.CommandText = SQLquery;
+                    command.Prepare();
+                    command.ExecuteNonQuery();
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    return "Campo Modificato Correttamente";
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                return "\n!!ERROR!!";
+            }
+        }
+
         public static string addVehicle(string connectionStr, string type, string marca, string modello, int cilindrata, double kw, DateTime dImm, int kmPercorsi, string colore, string usato, string km0, string info, int prezzo)
         {
             if (connectionStr != null)
