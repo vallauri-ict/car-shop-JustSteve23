@@ -32,7 +32,7 @@ namespace winFormProject
             "MV Agusta","Ohvale","Suzuki","Triumph","Yamaha","Vertigo","KSR","Zaeta"
         };
 
-        string[] color = {"Aquamarina","Avorio", "Azzurro", "Bianco","Blu","Giallo","Grigio Antracite","Rosa","Nero","Ocra","Rosso","Verde"};
+        public string[] color = {"Aquamarina","Avorio", "Azzurro", "Bianco","Blu","Giallo","Grigio Antracite","Rosa","Nero","Ocra","Rosso","Verde"};
         private void AggiungiVeicoloDialog_Load(object sender, EventArgs e)
         {
             cmbTipoVeicolo.SelectedIndex = 0;

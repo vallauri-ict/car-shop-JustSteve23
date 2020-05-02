@@ -1,5 +1,4 @@
-﻿using ReflectionCssPocProject;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,12 +10,17 @@ using System.Threading.Tasks;
 using System.Media;
 using System.Windows.Forms;
 using venditaVeicoliDLLProject;
-using static ReflectionCssPocProject.Utils;
+using static venditaVeicoliDLLProject.Utilities;
+using Microsoft.VisualBasic;
+using System.Data.OleDb;
 
 namespace winFormProject
 {
     public partial class frmMain : Form
     {
+        //correggere
+        public static string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\Stefano grosso\\Desktop\\vendiataVeicoliSolution\\DB\\Veicoli.accdb";
+
         SerializableBindingList<veicolo> listVeicolo;
         public frmMain()
         {
@@ -30,20 +34,20 @@ namespace winFormProject
 
         private void CaricaDatiDiTesto()
         {
-            moto m = new moto();
-            m = new moto("Ducati", "Panigale V4R", 1000, 75, DateTime.Now, 0, "blu", false, false, 10000, "StandarCO");
-            listVeicolo.Add(m);
-            auto a = new auto("Alfa Romeo", "Stelvio", 2000, 150, DateTime.Now, 0, "rosso", false, false, 35000, 8);
-            listVeicolo.Add(a);
-            a = new auto("Ferrari", "SF90Stradale", 5000, 800, DateTime.Now, 0, "rosso", false, false, 500000, 12);
-            listVeicolo.Add(a);
-            a = new auto("Bentley", "Continental GT", 3500, 600, DateTime.Now, 0, "nero", false, false, 200000, 14);
-            listVeicolo.Add(a);
-            m = new moto("Yamaha", "R1", 1000, 75, DateTime.Now, 0, "blu", false, false, 8500, "StandardCO");
-            listVeicolo.Add(m);
-            a = new auto("BMW", "M2 Competizione", 3000, 450, DateTime.Now, 0, "bianco", false, false, 66000, 10);
-            listVeicolo.Add(a);
-            lbVeicoli.DataSource = listVeicolo;
+            //moto m = new moto();
+            //m = new moto("Ducati", "Panigale V4R", 1000, 75, DateTime.Now, 0, "blu", false, false, 10000, "StandarCO");
+            //listVeicolo.Add(m);
+            //auto a = new auto("Alfa Romeo", "Stelvio", 2000, 150, DateTime.Now, 0, "rosso", false, false, 35000, 8);
+            //listVeicolo.Add(a);
+            //a = new auto("Ferrari", "SF90Stradale", 5000, 800, DateTime.Now, 0, "rosso", false, false, 500000, 12);
+            //listVeicolo.Add(a);
+            //a = new auto("Bentley", "Continental GT", 3500, 600, DateTime.Now, 0, "nero", false, false, 200000, 14);
+            //listVeicolo.Add(a);
+            //m = new moto("Yamaha", "R1", 1000, 75, DateTime.Now, 0, "blu", false, false, 8500, "StandardCO");
+            //listVeicolo.Add(m);
+            //a = new auto("BMW", "M2 Competizione", 3000, 450, DateTime.Now, 0, "bianco", false, false, 66000, 10);
+            //listVeicolo.Add(a);
+            //lbVeicoli.DataSource = listVeicolo;
         }
 
         private void toolStripBtnAddVeicolo_Click_1(object sender, EventArgs e)
@@ -75,9 +79,9 @@ namespace winFormProject
 
         private void salvaToolStripButton_Click(object sender, EventArgs e)
         {
-            Utils.SerializeToCsv(listVeicolo, "./veicolo.csv");
-            Utils.SerializeToXml(listVeicolo, "./veicolo.xml");
-            Utils.SerializeToJson(listVeicolo, "./veicolo.json");
+            Utilities.SerializeToCsv(listVeicolo, "./veicolo.csv");
+            Utilities.SerializeToXml(listVeicolo, "./veicolo.xml");
+            Utilities.SerializeToJson(listVeicolo, "./veicolo.json");
             //string toWrite = null;
             //StreamWriter sw = new StreamWriter("veicoli.dat");
 
@@ -100,7 +104,7 @@ namespace winFormProject
         private void tlsBtnCaricaOnline_Click(object sender, EventArgs e)
         {
             string homePath = @".\www.\index.html";
-            Utils.createHTML(listVeicolo, homePath);
+            Utilities.createHTML(listVeicolo, homePath);
             System.Diagnostics.Process.Start(homePath);
         }
 
@@ -108,7 +112,7 @@ namespace winFormProject
         {
             try
             {
-                Utils.WordDocumentCreation(listVeicolo);
+                Utilities.WordDocumentCreation(listVeicolo);
                 SystemSounds.Beep.Play();
                 System.Diagnostics.Process.Start("veicoli.docx");
             }
@@ -116,6 +120,11 @@ namespace winFormProject
             {
                 MessageBox.Show("Errore creazione foglio di word");
             }
+        }
+
+        private void tsbEliminaVeicolo_Click(object sender, EventArgs e)
+        {
+            DB.deleteVehicle(connectionString, int.Parse(Interaction.InputBox("INSERIRE IDENTIFICATORE DEL VEICOLO DA ELIMINARE")));
         }
     }
 }
