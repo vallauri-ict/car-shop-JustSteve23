@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.0": {
       "ConsoleAppProject/1.0.0": {
         "dependencies": {
+          "System.Data.OleDb": "4.7.0",
           "venditaVeicoliDLLProject": "1.0.0",
           "winFormProject": "1.0.0"
         },
