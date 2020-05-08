@@ -29,27 +29,29 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.lbVeicoli = new System.Windows.Forms.ListBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnAddVeicolo = new System.Windows.Forms.ToolStripButton();
             this.salvaToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.apriToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tlsBtnCaricaOnline = new System.Windows.Forms.ToolStripButton();
             this.tsbWordParse = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminaVeicolo = new System.Windows.Forms.ToolStripButton();
+            this.dgv = new System.Windows.Forms.DataGridView();
+            this.column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lbVeicoli
-            // 
-            this.lbVeicoli.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbVeicoli.FormattingEnabled = true;
-            this.lbVeicoli.ItemHeight = 25;
-            this.lbVeicoli.Location = new System.Drawing.Point(0, 50);
-            this.lbVeicoli.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lbVeicoli.Name = "lbVeicoli";
-            this.lbVeicoli.Size = new System.Drawing.Size(1090, 610);
-            this.lbVeicoli.TabIndex = 0;
             // 
             // toolStrip1
             // 
@@ -57,14 +59,13 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripBtnAddVeicolo,
             this.salvaToolStripButton,
-            this.apriToolStripButton,
             this.tlsBtnCaricaOnline,
             this.tsbWordParse,
             this.tsbEliminaVeicolo});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.toolStrip1.Size = new System.Drawing.Size(1090, 50);
+            this.toolStrip1.Size = new System.Drawing.Size(2852, 42);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -74,7 +75,7 @@
             this.toolStripBtnAddVeicolo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBtnAddVeicolo.Image")));
             this.toolStripBtnAddVeicolo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnAddVeicolo.Name = "toolStripBtnAddVeicolo";
-            this.toolStripBtnAddVeicolo.Size = new System.Drawing.Size(91, 44);
+            this.toolStripBtnAddVeicolo.Size = new System.Drawing.Size(91, 36);
             this.toolStripBtnAddVeicolo.Text = "&Nuovo";
             this.toolStripBtnAddVeicolo.Click += new System.EventHandler(this.toolStripBtnAddVeicolo_Click_1);
             // 
@@ -84,19 +85,9 @@
             this.salvaToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("salvaToolStripButton.Image")));
             this.salvaToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.salvaToolStripButton.Name = "salvaToolStripButton";
-            this.salvaToolStripButton.Size = new System.Drawing.Size(74, 44);
+            this.salvaToolStripButton.Size = new System.Drawing.Size(74, 36);
             this.salvaToolStripButton.Text = "&Salva";
             this.salvaToolStripButton.Click += new System.EventHandler(this.salvaToolStripButton_Click);
-            // 
-            // apriToolStripButton
-            // 
-            this.apriToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.apriToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("apriToolStripButton.Image")));
-            this.apriToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.apriToolStripButton.Name = "apriToolStripButton";
-            this.apriToolStripButton.Size = new System.Drawing.Size(62, 44);
-            this.apriToolStripButton.Text = "&Apri";
-            this.apriToolStripButton.Click += new System.EventHandler(this.apriToolStripButton_Click);
             // 
             // tlsBtnCaricaOnline
             // 
@@ -104,7 +95,7 @@
             this.tlsBtnCaricaOnline.Image = ((System.Drawing.Image)(resources.GetObject("tlsBtnCaricaOnline.Image")));
             this.tlsBtnCaricaOnline.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsBtnCaricaOnline.Name = "tlsBtnCaricaOnline";
-            this.tlsBtnCaricaOnline.Size = new System.Drawing.Size(154, 44);
+            this.tlsBtnCaricaOnline.Size = new System.Drawing.Size(154, 36);
             this.tlsBtnCaricaOnline.Text = "CaricaOnline";
             this.tlsBtnCaricaOnline.Click += new System.EventHandler(this.tlsBtnCaricaOnline_Click);
             // 
@@ -114,7 +105,7 @@
             this.tsbWordParse.Image = ((System.Drawing.Image)(resources.GetObject("tsbWordParse.Image")));
             this.tsbWordParse.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbWordParse.Name = "tsbWordParse";
-            this.tsbWordParse.Size = new System.Drawing.Size(113, 44);
+            this.tsbWordParse.Size = new System.Drawing.Size(113, 36);
             this.tsbWordParse.Text = "WordFile";
             this.tsbWordParse.Click += new System.EventHandler(this.tsbWordParse_Click);
             // 
@@ -124,38 +115,176 @@
             this.tsbEliminaVeicolo.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminaVeicolo.Image")));
             this.tsbEliminaVeicolo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEliminaVeicolo.Name = "tsbEliminaVeicolo";
-            this.tsbEliminaVeicolo.Size = new System.Drawing.Size(180, 44);
+            this.tsbEliminaVeicolo.Size = new System.Drawing.Size(180, 36);
             this.tsbEliminaVeicolo.Text = "Elimina Veicolo";
             this.tsbEliminaVeicolo.Click += new System.EventHandler(this.tsbEliminaVeicolo_Click);
+            // 
+            // dgv
+            // 
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13});
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv.Location = new System.Drawing.Point(0, 42);
+            this.dgv.Name = "dgv";
+            this.dgv.RowHeadersVisible = false;
+            this.dgv.RowHeadersWidth = 82;
+            this.dgv.RowTemplate.Height = 33;
+            this.dgv.Size = new System.Drawing.Size(2852, 1228);
+            this.dgv.TabIndex = 2;
+            // 
+            // column1
+            // 
+            this.column1.HeaderText = "ID";
+            this.column1.MinimumWidth = 10;
+            this.column1.Name = "column1";
+            this.column1.ReadOnly = true;
+            this.column1.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Type";
+            this.Column2.MinimumWidth = 10;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 50;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Marca";
+            this.Column3.MinimumWidth = 10;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Modello";
+            this.Column4.MinimumWidth = 10;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Cilindrata";
+            this.Column5.MinimumWidth = 10;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 80;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "PotenzaKW";
+            this.Column6.MinimumWidth = 10;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Data immatricolazione";
+            this.Column7.MinimumWidth = 10;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Chilometri percorsi";
+            this.Column8.MinimumWidth = 10;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Colore";
+            this.Column9.MinimumWidth = 10;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 80;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Usato";
+            this.Column10.MinimumWidth = 10;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 60;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "KM0";
+            this.Column11.MinimumWidth = 10;
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 60;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Info";
+            this.Column12.MinimumWidth = 10;
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Width = 150;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Prezzo";
+            this.Column13.MinimumWidth = 10;
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 660);
-            this.Controls.Add(this.lbVeicoli);
+            this.ClientSize = new System.Drawing.Size(2852, 1270);
+            this.Controls.Add(this.dgv);
             this.Controls.Add(this.toolStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
-            this.Text = "Salone Vendita";
+            this.Text = "Car shop";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lbVeicoli;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripBtnAddVeicolo;
-        private System.Windows.Forms.ToolStripButton apriToolStripButton;
         private System.Windows.Forms.ToolStripButton salvaToolStripButton;
         private System.Windows.Forms.ToolStripButton tlsBtnCaricaOnline;
         private System.Windows.Forms.ToolStripButton tsbWordParse;
         private System.Windows.Forms.ToolStripButton tsbEliminaVeicolo;
+        private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
     }
 }
 
