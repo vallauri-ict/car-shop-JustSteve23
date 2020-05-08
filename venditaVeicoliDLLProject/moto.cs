@@ -6,8 +6,7 @@ namespace venditaVeicoliDLLProject
     public class moto:veicolo
     {
         private string marcaSella;
-        public moto() : base("BMW","S1000RR",1000,0,new DateTime(),0,"blu",false,false,8000){ MarcaSella = "Quintino"; }
-        public moto(string marca, string modello, int cilindrata, int potenza, DateTime dataImm,
+        public moto( string marca, string modello, int cilindrata, double potenza, DateTime dataImm,
     int chilometriPercorsi, string colore, bool usato, bool kmZero,double prezzo,string MarcaSella) : base(marca, modello, cilindrata,
         potenza, dataImm, chilometriPercorsi, colore, usato, kmZero,prezzo)
         {

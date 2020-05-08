@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data.OleDb;
+using static venditaVeicoliDLLProject.Utilities;
 
 namespace venditaVeicoliDLLProject
 {
     public class DB
-    {
+    { 
         public static string createTableVehicles(string connectionStr)
         {
             if (connectionStr != null)
@@ -27,6 +28,10 @@ namespace venditaVeicoliDLLProject
                                             colore VARCHAR(25),isUsato VARCHAR(2),isKm0 VARCHAR(2),info VARCHAR(255),prezzo INT);";
                         command.ExecuteNonQuery();
                         command.CommandText = "INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES('auto','Ferrari','488Pista',4000,589.24,#10/08/2019#,0,'Rosso','NO','NO','numero airbag 8',400000);";
+                        command.ExecuteNonQuery();
+                        command.CommandText = "INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES('auto','Ferrari','F8 Triturbo',4000,459,#10/01/2020#,0,'Blu','NO','NO','numero airbag 12',388999);";
+                        command.ExecuteNonQuery();
+                        command.CommandText = "INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES('moto','BMW','S100RR',1000,150,#10/08/2019#,0,'Bianco','NO','NO','Marca sella BMWStock',29999);";
                         command.ExecuteNonQuery();
 
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -206,21 +211,21 @@ namespace venditaVeicoliDLLProject
                     OleDbCommand command = new OleDbCommand();
                     command.Connection = connection;
 
-                    string SQLquery = "INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES(@type,@marca,@modello,@cilindrata,@potenzaKw,@dataimmatricolazione,@kmPercorsi,@colore,@isUsato,@isKm0,@info,@prezzo)";
+                    string SQLquery = $"INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES('{type}','{marca}','{modello}',{cilindrata},{kw},#{dImm.ToShortDateString()}#,{kmPercorsi},'{colore}','{usato}','{km0}','{info}',{prezzo});";
                     command.CommandText = SQLquery;
 
-                    command.Parameters.Add(new OleDbParameter("@type", OleDbType.VarChar, 10)).Value = type;
-                    command.Parameters.Add("@marca", OleDbType.VarChar, 255).Value = marca;
-                    command.Parameters.Add("@modello", OleDbType.VarChar, 255).Value = modello;
-                    command.Parameters.Add("@cilindrata", OleDbType.Integer).Value = cilindrata;
-                    command.Parameters.Add("@potenzaKw", OleDbType.Double).Value = kw;
-                    command.Parameters.Add("@dataimmatricolazione", OleDbType.Date).Value = dImm.ToShortDateString();
-                    command.Parameters.Add("@kmPercorsi", OleDbType.Integer).Value = kmPercorsi;
-                    command.Parameters.Add("@colore", OleDbType.VarChar, 25).Value = colore;
-                    command.Parameters.Add("@isKm0", OleDbType.VarChar, 2).Value = km0;
-                    command.Parameters.Add("@isUsato", OleDbType.VarChar, 2).Value = usato;
-                    command.Parameters.Add("@info", OleDbType.VarChar, 255).Value = info;
-                    command.Parameters.Add("@prezzo", OleDbType.Integer).Value = prezzo;
+                    //command.Parameters.Add(new OleDbParameter("@type", OleDbType.VarChar, 10)).Value = type;
+                    //command.Parameters.Add("@marca", OleDbType.VarChar, 255).Value = marca;
+                    //command.Parameters.Add("@modello", OleDbType.VarChar, 255).Value = modello;
+                    //command.Parameters.Add("@cilindrata", OleDbType.Integer).Value = cilindrata;
+                    //command.Parameters.Add("@potenzaKw", OleDbType.Double).Value = kw;
+                    //command.Parameters.Add("@dataimmatricolazione", OleDbType.Date).Value = dImm;
+                    //command.Parameters.Add("@kmPercorsi", OleDbType.Integer).Value = kmPercorsi;
+                    //command.Parameters.Add("@colore", OleDbType.VarChar, 25).Value = colore;
+                    //command.Parameters.Add("@isKm0", OleDbType.VarChar, 3).Value = km0;
+                    //command.Parameters.Add("@isUsato", OleDbType.VarChar, 3).Value = usato;
+                    //command.Parameters.Add("@info", OleDbType.VarChar, 255).Value = info;
+                    //command.Parameters.Add("@prezzo", OleDbType.Integer).Value = prezzo;
 
                     command.Prepare();
                     command.ExecuteNonQuery();
@@ -236,7 +241,7 @@ namespace venditaVeicoliDLLProject
             }
         }
 
-        public static string deleteVehicle(string connectionStr,int id)
+        public static string deleteVehicle(string connectionStr, int id)
         {
             if (connectionStr != null)
             {
@@ -255,7 +260,7 @@ namespace venditaVeicoliDLLProject
                         command.Prepare();
                         command.ExecuteNonQuery();
                         Console.ForegroundColor = ConsoleColor.Green;
-                        return "";
+                        return "Done";
                     }
                     catch (Exception ex)
                     {
@@ -270,5 +275,51 @@ namespace venditaVeicoliDLLProject
                 return "\n!!ERROR!!";
             }
         }
+        public static void datapass(string connectionStr, SerializableBindingList<veicolo> listveicolo,int[] iDs)
+        {
+            if (connectionStr != null)
+            {
+                OleDbConnection connection = new OleDbConnection(connectionStr);
+                using (connection)
+                {
+                    connection.Open();
+                    OleDbCommand command = new OleDbCommand("SELECT * FROM veicoli", connection);
+                    OleDbDataReader reader = command.ExecuteReader();
+
+                    listveicolo.Clear();
+                    Array.Clear(iDs, 0, iDs.Length);
+                    if (reader.HasRows)
+                    { 
+                        int i = 0;
+                        while (reader.Read()) { 
+                            if (reader.GetString(1) == "auto")
+                            {
+                                iDs[i] = reader.GetInt32(0);
+                                listveicolo.Add(new auto(reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetDouble(5), reader.GetDateTime(6), reader.GetInt32(7), reader.GetString(8), reader.GetString(9) == "SI" ? true : false, reader.GetString(10) == "SI" ? true : false, reader.GetInt32(12), reader.GetString(11)));
+                            }
+                            else
+                            {
+                                iDs[i] = reader.GetInt32(0);
+                                listveicolo.Add(new moto(reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetDouble(5), reader.GetDateTime(6), reader.GetInt32(7), reader.GetString(8), reader.GetString(9) == "SI" ? true : false, reader.GetString(10) == "SI" ? true : false, reader.GetInt32(12), reader.GetString(11)));
+                            }
+                        i++;
+                        //    Marca: {reader.GetString(2)};
+                        //    Modello: {reader.GetString(3)};
+                        //    Cilindrata: {reader.GetInt32(4)};
+                        //    Potenza(KW): {reader.GetDouble(5)};
+                        //    Data Immatricolazione: {reader.GetDateTime(6).ToShortDateString()};
+                        //    Chilometri percorsi: {reader.GetInt32(7)};
+                        //    Colore: {reader.GetString(8)};
+                        //    Usato: {reader.GetString(9)};
+                        //    Km0: {reader.GetString(10)};
+                        //    Informazioni: {reader.GetString(11)};
+                        //    Prezzo: {reader.GetInt32(12)};
+                        }
+                    }
+                    reader.Close();
+                }
+            }
+        }
+
     }
 }

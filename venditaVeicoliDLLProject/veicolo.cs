@@ -9,6 +9,7 @@ namespace venditaVeicoliDLLProject
     public abstract class veicolo
     {
         #region fields
+        private int id;
         private string marca;
         private string modello;
         private int cilindrata;
@@ -42,7 +43,7 @@ namespace venditaVeicoliDLLProject
             this.Marca = data[1];
             this.Modello = data[2];
             this.Cilindrata = int.Parse(data[3]);
-            this.PotenzaKw = int.Parse(data[4]);
+            this.PotenzaKw = double.Parse(data[4]);
             this.Immatricolazione = Convert.ToDateTime(data[5]);
             this.KmPercorsi = int.Parse(data[6]);
             this.Colore = data[7];
