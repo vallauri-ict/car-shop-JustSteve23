@@ -14,6 +14,7 @@ namespace winFormProject
 {
     public partial class AggiungiVeicoloDialog : Form
     {
+        static string connectionStr = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName}\\DB\\Veicoli.accdb";
         BindingList<veicolo> listVeicolo;
         public AggiungiVeicoloDialog(BindingList<veicolo> listVeicolo)
         {
@@ -45,13 +46,14 @@ namespace winFormProject
 
         private void btnAggiungi_Click(object sender, EventArgs e)
         {
-            if (cmbTipoVeicolo.SelectedIndex == 0)
-                listVeicolo.Add(new auto(cmbMarca.SelectedItem.ToString(),txtModello.Text,int.Parse(txtCilindrata.Text) ,int.Parse(txtPotenza.Text),dtpImm.Value,Convert.ToInt32(nudMP.Value), cmbColor.SelectedItem.ToString(), cbUsato.Checked,cbKmZero.Checked,Convert.ToInt64(txtPrezzo.Text) ,Convert.ToString(nudNumeroAirBag.Value)));
-            else
-                listVeicolo.Add(new moto(cmbMarca.SelectedItem.ToString(), txtModello.Text, int.Parse(txtCilindrata.Text), int.Parse(txtPotenza.Text), dtpImm.Value, Convert.ToInt32(nudMP.Value), cmbColor.SelectedItem.ToString(), cbUsato.Checked, cbKmZero.Checked,Convert.ToUInt64(txtPrezzo.Text) ,tbMarcaSella.Text));
+            MessageBox.Show(DB.addVehicle(connectionStr,cmbTipoVeicolo.SelectedItem.ToString(),cmbMarca.SelectedItem.ToString(),txtModello.Text,int.Parse(txtCilindrata.Text),double.Parse(txtPotenza.Text),Convert.ToDateTime(dtpImm.Value),Convert.ToInt32(nudMP.Value),cmbColor.SelectedItem.ToString(),cbUsato.Checked ? "SI" : "NO",cbKmZero.Checked ? "SI" : "NO",cmbTipoVeicolo.SelectedItem.ToString()=="auto".ToLower() ? "numero airbag "+Convert.ToInt32(nudNumeroAirBag.Value) : "marca sella "+lblMarcaSella.Text,int.Parse(txtPrezzo.Text)));
+            //if (cmbTipoVeicolo.SelectedIndex == 0)
+            //    listVeicolo.Add(new auto(cmbMarca.SelectedItem.ToString(),txtModello.Text,int.Parse(txtCilindrata.Text) ,int.Parse(txtPotenza.Text),dtpImm.Value,Convert.ToInt32(nudMP.Value), cmbColor.SelectedItem.ToString(), cbUsato.Checked,cbKmZero.Checked,Convert.ToInt64(txtPrezzo.Text) ,Convert.ToString(nudNumeroAirBag.Value)));
+            //else
+            //    listVeicolo.Add(new moto(cmbMarca.SelectedItem.ToString(), txtModello.Text, int.Parse(txtCilindrata.Text), int.Parse(txtPotenza.Text), dtpImm.Value, Convert.ToInt32(nudMP.Value), cmbColor.SelectedItem.ToString(), cbUsato.Checked, cbKmZero.Checked,Convert.ToUInt64(txtPrezzo.Text) ,tbMarcaSella.Text));
 
-            MessageBox.Show($"Aggiungi\n {listVeicolo.Last()}");
-            this.Close();
+            //MessageBox.Show($"Aggiungi\n {listVeicolo.Last()}");
+            //this.Close();
         }
 
         private void btnAnnulla_Click(object sender, EventArgs e)

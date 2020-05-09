@@ -64,8 +64,8 @@
             this.cmbTipoVeicolo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbTipoVeicolo.FormattingEnabled = true;
             this.cmbTipoVeicolo.Items.AddRange(new object[] {
-            "AUTO",
-            "MOTO"});
+            "auto",
+            "moto"});
             this.cmbTipoVeicolo.Location = new System.Drawing.Point(193, 12);
             this.cmbTipoVeicolo.Name = "cmbTipoVeicolo";
             this.cmbTipoVeicolo.Size = new System.Drawing.Size(227, 33);
@@ -188,7 +188,7 @@
             // nudMP
             // 
             this.nudMP.Increment = new decimal(new int[] {
-            1000,
+            10,
             0,
             0,
             0});
