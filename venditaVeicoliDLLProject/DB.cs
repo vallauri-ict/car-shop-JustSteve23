@@ -334,7 +334,7 @@ namespace venditaVeicoliDLLProject
                         OleDbCommand command = new OleDbCommand();
                         command.Connection = connection;
 
-                        string SQLquery = $"DROP TABLE veicoli";
+                        string SQLquery = $"DROP TABLE veicoli;";
                         command.CommandText = SQLquery;
 
                         command.Prepare();
