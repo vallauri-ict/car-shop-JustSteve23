@@ -29,6 +29,11 @@ namespace ConsoleAppProject
                         Console.ForegroundColor = ConsoleColor.White;
                         System.Threading.Thread.Sleep(2000);
                         break;
+                    case "DT":
+                        Console.WriteLine(DB.dropTable(connectionStr));
+                        Console.ForegroundColor = ConsoleColor.White;
+                        System.Threading.Thread.Sleep(2000);
+                        break;
                     case "AV":
                         string aus;
                         do
@@ -261,6 +266,7 @@ namespace ConsoleAppProject
             Console.WriteLine("\n ? -> VISUALIZZA INFORMAZIONI SUI COMANDI");
             Console.WriteLine(" Ginfo -> VISUALIZZA ALCUNE INFORMAZIONI SULLA SHELL");
             Console.WriteLine(" CT -> CREA LA TABELLA");
+            Console.WriteLine(" DT -> ELIMINA LA TABELLA");
             Console.WriteLine(" AV -> AGGIUNGE UN VEICOLO ALLA TABELLA AUTOMOBLI");
             Console.WriteLine(" DV -> ELIMINA UN VEICOLO ALLA TABELLA AUTOMOBLI DATO IN IGRESSO L'IDENTIFICATORE");
             Console.WriteLine(" UV -> AGGIORNA UN CAMPO DI UNA RIGA");
