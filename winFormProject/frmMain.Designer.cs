@@ -32,18 +32,20 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnAddVeicolo = new System.Windows.Forms.ToolStripButton();
             this.salvaToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tlsBtnCaricaOnline = new System.Windows.Forms.ToolStripButton();
             this.tsbWordParse = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbEliminaVeicolo = new System.Windows.Forms.ToolStripButton();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgvBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +64,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.toolStrip1.Size = new System.Drawing.Size(2852, 42);
+            this.toolStrip1.Size = new System.Drawing.Size(2956, 42);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -86,6 +88,11 @@
             this.salvaToolStripButton.Text = "&Salva";
             this.salvaToolStripButton.Click += new System.EventHandler(this.salvaToolStripButton_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 42);
+            // 
             // tlsBtnCaricaOnline
             // 
             this.tlsBtnCaricaOnline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -106,6 +113,13 @@
             this.tsbWordParse.Text = "WordFile";
             this.tsbWordParse.Click += new System.EventHandler(this.tsbWordParse_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.toolStripSeparator1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 42);
+            // 
             // tsbEliminaVeicolo
             // 
             this.tsbEliminaVeicolo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -114,7 +128,6 @@
             this.tsbEliminaVeicolo.Name = "tsbEliminaVeicolo";
             this.tsbEliminaVeicolo.Size = new System.Drawing.Size(180, 36);
             this.tsbEliminaVeicolo.Text = "Elimina Veicolo";
-            this.tsbEliminaVeicolo.Click += new System.EventHandler(this.tsbEliminaVeicolo_Click);
             // 
             // dgv
             // 
@@ -126,28 +139,18 @@
             this.Column4,
             this.Column9,
             this.Column13,
-            this.dgvBtn});
+            this.Column5,
+            this.dgvBtn,
+            this.Column2});
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.Location = new System.Drawing.Point(0, 42);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowHeadersWidth = 82;
             this.dgv.RowTemplate.Height = 33;
-            this.dgv.Size = new System.Drawing.Size(2852, 1228);
+            this.dgv.Size = new System.Drawing.Size(2956, 1228);
             this.dgv.TabIndex = 2;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.toolStripSeparator1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 42);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 42);
             // 
             // column1
             // 
@@ -189,6 +192,15 @@
             this.Column13.ReadOnly = true;
             this.Column13.Width = 200;
             // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Modifica";
+            this.Column5.MinimumWidth = 10;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Text = "Modifica";
+            this.Column5.UseColumnTextForButtonValue = true;
+            // 
             // dgvBtn
             // 
             this.dgvBtn.HeaderText = "Dettagli";
@@ -198,11 +210,20 @@
             this.dgvBtn.Text = "Dettagli";
             this.dgvBtn.UseColumnTextForButtonValue = true;
             // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Elimina";
+            this.Column2.MinimumWidth = 10;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Text = "Elimina";
+            this.Column2.UseColumnTextForButtonValue = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2852, 1270);
+            this.ClientSize = new System.Drawing.Size(2956, 1270);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -233,7 +254,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewButtonColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn dgvBtn;
+        private System.Windows.Forms.DataGridViewButtonColumn Column2;
     }
 }
 

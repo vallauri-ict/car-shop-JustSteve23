@@ -292,7 +292,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 812);
+            this.ClientSize = new System.Drawing.Size(628, 828);
             this.Controls.Add(this.tbPrezzo);
             this.Controls.Add(this.tbInfo);
             this.Controls.Add(this.tbKm0);

@@ -85,25 +85,31 @@ namespace winFormProject
             }
         }
 
-        private void tsbEliminaVeicolo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MessageBox.Show(DB.deleteVehicle(connectionStr, int.Parse(Interaction.InputBox("INSERIRE IDENTIFICATORE DEL VEICOLO DA ELIMINARE"))));
-                CaricaDatiDiTesto();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("!!ERROR!! "+ex.Message);
-            }
-        }
-
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (((DataGridView)sender).Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex>=0)
+            if (((DataGridView)sender).Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex>=0 && e.ColumnIndex==6)
             {
                 frmDettagli FRD = new frmDettagli(iDs[e.RowIndex],iDs,listVeicolo);
                 FRD.ShowDialog();
+            }
+
+            if (((DataGridView)sender).Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 7)
+            {
+                try
+                {
+                    DB.deleteVehicle(connectionStr, iDs[e.RowIndex]);
+                    CaricaDatiDiTesto();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("!!ERROR!! " + ex.Message);
+                }
+            }
+            if (((DataGridView)sender).Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 5)
+            {
+                frmModifica FMD = new frmModifica(iDs[e.RowIndex]);
+                FMD.ShowDialog();
+                CaricaDatiDiTesto();
             }
         }
     }

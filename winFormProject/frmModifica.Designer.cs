@@ -1,0 +1,134 @@
+﻿namespace winFormProject
+{
+    partial class frmModifica
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nud = new System.Windows.Forms.NumericUpDown();
+            this.rtb = new System.Windows.Forms.RichTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtV = new System.Windows.Forms.TextBox();
+            this.btnModifica = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.nud)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(53, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(408, 61);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Modifica campo";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(35, 147);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(289, 25);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "numero campo da modificare";
+            // 
+            // nud
+            // 
+            this.nud.Location = new System.Drawing.Point(361, 145);
+            this.nud.Name = "nud";
+            this.nud.Size = new System.Drawing.Size(120, 31);
+            this.nud.TabIndex = 2;
+            // 
+            // rtb
+            // 
+            this.rtb.Location = new System.Drawing.Point(527, 36);
+            this.rtb.Name = "rtb";
+            this.rtb.ReadOnly = true;
+            this.rtb.Size = new System.Drawing.Size(244, 383);
+            this.rtb.TabIndex = 3;
+            this.rtb.Text = "";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(121, 211);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(276, 25);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "valore campo da modificare";
+            // 
+            // txtV
+            // 
+            this.txtV.Location = new System.Drawing.Point(64, 255);
+            this.txtV.Name = "txtV";
+            this.txtV.Size = new System.Drawing.Size(397, 31);
+            this.txtV.TabIndex = 5;
+            // 
+            // btnModifica
+            // 
+            this.btnModifica.Location = new System.Drawing.Point(163, 326);
+            this.btnModifica.Name = "btnModifica";
+            this.btnModifica.Size = new System.Drawing.Size(181, 77);
+            this.btnModifica.TabIndex = 6;
+            this.btnModifica.Text = "Modifica campo";
+            this.btnModifica.UseVisualStyleBackColor = true;
+            this.btnModifica.Click += new System.EventHandler(this.btnModifica_Click);
+            // 
+            // frmModifica
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnModifica);
+            this.Controls.Add(this.txtV);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.rtb);
+            this.Controls.Add(this.nud);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "frmModifica";
+            this.Text = "frmModifica";
+            this.Load += new System.EventHandler(this.frmModifica_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nud)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown nud;
+        private System.Windows.Forms.RichTextBox rtb;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtV;
+        private System.Windows.Forms.Button btnModifica;
+    }
+}

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using venditaVeicoliDLLProject;
 using static venditaVeicoliDLLProject.Utilities;
+using System.IO;
 
 namespace winFormProject
 {
@@ -25,6 +26,7 @@ namespace winFormProject
             this.iDs = iDs;
         }
 
+        string[] imgs = new string[10000];
         private void frmDettagli_Load(object sender, EventArgs e)
         {
             tbID.Text = id.ToString();
