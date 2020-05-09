@@ -321,5 +321,41 @@ namespace venditaVeicoliDLLProject
             }
         }
 
+        public static string dropTable(string connectionStr)
+        {
+            if (connectionStr!= null)
+            {
+                OleDbConnection connection = new OleDbConnection(connectionStr);
+                using (connection)
+                {
+                    try
+                    {
+                        connection.Open();
+                        OleDbCommand command = new OleDbCommand();
+                        command.Connection = connection;
+
+                        string SQLquery = $"DROP TABLE veicoli";
+                        command.CommandText = SQLquery;
+
+                        command.Prepare();
+                        command.ExecuteNonQuery();
+
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        return "\nTABELLA ELIMINATA";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        return "\n!!ERROR!!" +ex.Message;
+                    }
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                return "\n!!ERROR!!";
+            }
+        }
+
     }
 }
