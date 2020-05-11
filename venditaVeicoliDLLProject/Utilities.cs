@@ -154,11 +154,11 @@ namespace venditaVeicoliDLLProject
             rp2.Italic = new Italic();
             r2.Append(rp2);
             // Always add properties first
-            r2.AppendChild(new Text("   -MOTORIZZAZIONE ") { Space = SpaceProcessingModeValues.Preserve });
+            r2.AppendChild(new Text("   -MOTORIZZAZIONE: ") { Space = SpaceProcessingModeValues.Preserve });
             r2.AppendChild(new Break());
             r2.AppendChild(new Text("   -Potenza: " + txtPot + "kw   -Cilindrata: " + txtCil + " cm2") { Space = SpaceProcessingModeValues.Preserve });
             r2.AppendChild(new Break());
-            r2.AppendChild(new Text("  -Prezzo: " + prezzo + "€"));
+            r2.AppendChild(new Text("  -Prezzo: " + prezzo + "$"));
             p.Append(r2);
 
             return p;

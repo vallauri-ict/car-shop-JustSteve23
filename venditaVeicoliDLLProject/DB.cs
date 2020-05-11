@@ -7,7 +7,7 @@ using static venditaVeicoliDLLProject.Utilities;
 namespace venditaVeicoliDLLProject
 {
     public class DB
-    { 
+    {
         public static string createTableVehicles(string connectionStr)
         {
             if (connectionStr != null)
@@ -39,7 +39,8 @@ namespace venditaVeicoliDLLProject
                     }
                     catch (OleDbException ex)
                     {
-                        return "\n" + ex.Message;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        return "\n!!ERROR!!" + ex.Message;
                     }
                 }
             }
@@ -72,9 +73,9 @@ namespace venditaVeicoliDLLProject
                                 $"Chilometri percorsi: {reader.GetInt32(7)}Km\n" +
                                 $"Colore: {reader.GetString(8)}\n" +
                                 $"Usato: {reader.GetString(9)}\n" +
-                                $"Km0: {reader.GetString(10)}\n"+
+                                $"Km0: {reader.GetString(10)}\n" +
                                 $"Informazioni: {reader.GetString(11)}\n" +
-                                $"Prezzo: {reader.GetInt32(12)}$\n"+
+                                $"Prezzo: {reader.GetInt32(12)}$\n" +
                                 "\n-------------------------\n");
                     }
                     else
@@ -85,58 +86,72 @@ namespace venditaVeicoliDLLProject
             }
         }
 
-        public static string updateVehicle(string connectionStr, string id, string uField, string toUpdate,int nf)
+        public static string updateVehicle(string connectionStr, string id, string uField, string toUpdate, int nf)
         {
-            if (connectionStr!=null)
+            if (connectionStr != null)
             {
                 OleDbConnection connection = new OleDbConnection(connectionStr);
                 using (connection)
                 {
                     connection.Open();
                     OleDbCommand command = new OleDbCommand();
-                    command.Connection=connection;
+                    command.Connection = connection;
 
-                    int ausI=0;
-                    string ausS=null;
-                    DateTime ausDT=Convert.ToDateTime("01/01/1900");
+                    int ausI = 0;
+                    string ausS = null;
+                    DateTime ausDT = Convert.ToDateTime("01/01/1900");
                     double ausD = 0;
-                    int fl=0;
+                    int fl = 0;
+
+                    string SQLquery = null;
 
                     switch (nf)
                     {
                         case 0:
-                            if (toUpdate=="auto" || toUpdate=="moto") {
-                                ausS = toUpdate; fl = 2; }
-                            else {
+                            if (toUpdate == "auto" || toUpdate == "moto")
+                            {
+                                ausS = toUpdate; fl = 2;
+                                SQLquery = $"UPDATE veicoli SET type=@aus WHERE id={id};";
+                            }
+                            else
+                            {
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 return "!!ERROR VALORI VALIDI-> auto/moto!!\n";
                             }
                             break;
-                        case 1: ausS = toUpdate; fl = 2; break;
-                        case 2: ausS = toUpdate; fl = 2; break;
+                        case 1: ausS = toUpdate; fl = 2; SQLquery = $"UPDATE veicoli SET marca=@aus WHERE id={id};"; break;
+                        case 2: ausS = toUpdate; fl = 2; SQLquery = $"UPDATE veicoli SET modello=@aus WHERE id={id};"; break;
                         case 3:
-                            try { ausI = int.Parse(toUpdate); fl = 1; }
+                            try { ausI = int.Parse(toUpdate); fl = 1; SQLquery = $"UPDATE veicoli SET cilindrata=@aus WHERE id={id};"; }
                             catch (Exception ex)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 return "!!ERROR!!\n" + ex.Message;
                             }
                             break;
-                        case 4: try { ausD = double.Parse(toUpdate); fl = 4; }
-                            catch (Exception ex) {
+                        case 4:
+                            try { ausD = double.Parse(toUpdate); fl = 4; SQLquery = $"UPDATE veicoli SET potenzaKw=@aus WHERE id={id};"; }
+                            catch (Exception ex)
+                            {
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 return "!!ERROR!!\n" + ex.Message;
                             }
                             break;
-                        case 5: try { ausDT = Convert.ToDateTime(toUpdate); fl = 3; } 
-                            catch (Exception ex) {
+                        case 5:
+                            try { ausDT = Convert.ToDateTime(toUpdate); fl = 3; SQLquery = $"UPDATE veicoli SET dataImmatricolazione=@aus WHERE id={id};"; }
+                            catch (Exception ex)
+                            {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                return "!!ERROR!!\n" +ex.Message;} break;
-                        case 6: ausI = int.Parse(toUpdate); fl = 1; break;
-                        case 7: ausS = toUpdate; fl = 2; break;
+                                return "!!ERROR!!\n" + ex.Message;
+                            }
+                            break;
+                        case 6: ausI = int.Parse(toUpdate); fl = 1; SQLquery = $"UPDATE veicoli SET kmPercorsi=@aus WHERE id={id};"; break;
+                        case 7: ausS = toUpdate; fl = 2; SQLquery = $"UPDATE veicoli SET colore=@aus WHERE id={id};"; break;
                         case 8:
-                            if (toUpdate=="SI" || toUpdate=="NO") {
-                                ausS = toUpdate; fl = 2; 
+                            if (toUpdate == "SI" || toUpdate == "NO")
+                            {
+                                ausS = toUpdate; fl = 2;
+                                SQLquery = $"UPDATE veicoli SET isUsato=@aus WHERE id={id};";
                             }
                             else
                             {
@@ -148,6 +163,7 @@ namespace venditaVeicoliDLLProject
                             if (toUpdate == "SI" || toUpdate == "NO")
                             {
                                 ausS = toUpdate; fl = 2;
+                                SQLquery = $"UPDATE veicoli SET isKm0=@aus WHERE id={id};";
                             }
                             else
                             {
@@ -155,42 +171,73 @@ namespace venditaVeicoliDLLProject
                                 return "!!ERROR VALORI VALIDI-> SI/NO!!\n";
                             }
                             break;
-                        case 10: ausS = toUpdate; fl = 2; break;
-                        case 11: try { ausI = int.Parse(toUpdate); fl = 1; }
+                        case 10: ausS = toUpdate; fl = 2; SQLquery = $"UPDATE veicoli SET info=@aus WHERE id={id};"; break;
+                        case 11:
+                            try { ausI = int.Parse(toUpdate); fl = 1; SQLquery = $"UPDATE veicoli SET prezzo=@aus WHERE id={id};"; }
                             catch (Exception ex)
-                            {Console.ForegroundColor = ConsoleColor.Red;
-                                return "!!ERROR!!\n" + ex.Message;}break;
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                return "!!ERROR!!\n" + ex.Message;
+                            }
+                            break;
                     }
 
-                    string SQLquery;
-                    if (fl==0)
+                    if (fl == 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         return "\n!!ERROR!!";
                     }
                     else if (fl == 1)
                     {
-                        SQLquery = $"UPDATE veicoli SET {uField}={ausI} WHERE id={id};";
+                        command.Parameters.Add("@aus", OleDbType.Integer).Value = ausI;
+                        //SQLquery = $"UPDATE veicoli SET {uField}={ausI} WHERE id={id};";
                     }
                     else if (fl == 2)
                     {
-                        SQLquery = $"UPDATE veicoli SET {uField}='{ausS}' WHERE id={id};";
+                        command.Parameters.Add("@aus", OleDbType.VarChar, 255).Value = ausS;
+                        //SQLquery = $"UPDATE veicoli SET {uField}='{ausS}' WHERE id={id};";
                     }
-                    else if(fl==3)
+                    else if (fl == 3)
                     {
-                        SQLquery = $"UPDATE veicoli SET {uField}=#{ausDT}# WHERE id={id};";
+                        command.Parameters.Add("@aus", OleDbType.Date).Value = ausDT;
+                        //SQLquery = $"UPDATE veicoli SET {uField}=#{ausDT}# WHERE id={id};";
                     }
                     else
                     {
-                        SQLquery = $"UPDATE veicoli SET {uField}={ausD} WHERE id={id};";
+                        command.Parameters.Add("@aus", OleDbType.Double).Value = ausD;
+                        //SQLquery = $"UPDATE veicoli SET {uField}={ausD} WHERE id={id};";
                     }
 
-                    command.CommandText = SQLquery;
-                    command.Prepare();
-                    command.ExecuteNonQuery();
+                    if (SQLquery != null)
+                    {
+                        try
+                        {
+                            if (IDexitence(connectionStr, int.Parse(id)))
+                            {
+                                command.CommandText = SQLquery;
+                                command.Prepare();
+                                command.ExecuteNonQuery();
 
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    return "Campo Modificato Correttamente";
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                return "Campo Modificato Correttamente";
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                return "\n!!il record non esiste nella tabella!!".ToUpper();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            return "\n!!ERROR!! " + ex.Message;
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        return "\n!!ERROR!!";
+                    }
                 }
             }
             else
@@ -198,6 +245,36 @@ namespace venditaVeicoliDLLProject
                 Console.ForegroundColor = ConsoleColor.Red;
                 return "\n!!ERROR!!";
             }
+        }
+
+        private static bool IDexitence(string connectionStr, int id)
+        {
+            bool flag = false;
+            if (connectionStr != null)
+            {
+                OleDbConnection connection = new OleDbConnection(connectionStr);
+                using (connection)
+                {
+                    connection.Open();
+                    OleDbCommand command = new OleDbCommand("SELECT * FROM veicoli", connection);
+                    OleDbDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            int aus = reader.GetInt32(0);
+                            if (aus == id)
+                            {
+                                flag = true;
+                                return flag;
+                            }
+                        }
+                    }
+                    reader.Close();
+                }
+            }
+            return flag;
         }
 
         public static string addVehicle(string connectionStr, string type, string marca, string modello, int cilindrata, double kw, DateTime dImm, int kmPercorsi, string colore, string usato, string km0, string info, int prezzo)
@@ -211,21 +288,22 @@ namespace venditaVeicoliDLLProject
                     OleDbCommand command = new OleDbCommand();
                     command.Connection = connection;
 
-                    string SQLquery = $"INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES('{type}','{marca}','{modello}',{cilindrata},{kw},#{dImm.ToShortDateString()}#,{kmPercorsi},'{colore}','{usato}','{km0}','{info}',{prezzo});";
+                    //string SQLquery = $"INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES('{type}','{marca}','{modello}',{cilindrata},{kw},#{dImm.ToShortDateString()}#,{kmPercorsi},'{colore}','{usato}','{km0}','{info}',{prezzo});";
+                    string SQLquery = $"INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES(@type,@marca,@modello,@cilindrata,@potenzaKw,@dataimmatricolazione,@kmPercorsi,@colore,@isUsato,@isKm0,@info,@prezzo);";
                     command.CommandText = SQLquery;
 
-                    //command.Parameters.Add(new OleDbParameter("@type", OleDbType.VarChar, 10)).Value = type;
-                    //command.Parameters.Add("@marca", OleDbType.VarChar, 255).Value = marca;
-                    //command.Parameters.Add("@modello", OleDbType.VarChar, 255).Value = modello;
-                    //command.Parameters.Add("@cilindrata", OleDbType.Integer).Value = cilindrata;
-                    //command.Parameters.Add("@potenzaKw", OleDbType.Double).Value = kw;
-                    //command.Parameters.Add("@dataimmatricolazione", OleDbType.Date).Value = dImm;
-                    //command.Parameters.Add("@kmPercorsi", OleDbType.Integer).Value = kmPercorsi;
-                    //command.Parameters.Add("@colore", OleDbType.VarChar, 25).Value = colore;
-                    //command.Parameters.Add("@isKm0", OleDbType.VarChar, 3).Value = km0;
-                    //command.Parameters.Add("@isUsato", OleDbType.VarChar, 3).Value = usato;
-                    //command.Parameters.Add("@info", OleDbType.VarChar, 255).Value = info;
-                    //command.Parameters.Add("@prezzo", OleDbType.Integer).Value = prezzo;
+                    command.Parameters.Add(new OleDbParameter("@type", OleDbType.VarChar, 10)).Value = type;
+                    command.Parameters.Add("@marca", OleDbType.VarChar, 255).Value = marca;
+                    command.Parameters.Add("@modello", OleDbType.VarChar, 255).Value = modello;
+                    command.Parameters.Add("@cilindrata", OleDbType.Integer).Value = cilindrata;
+                    command.Parameters.Add("@potenzaKw", OleDbType.Double).Value = kw;
+                    command.Parameters.Add("@dataimmatricolazione", OleDbType.Date).Value = dImm;
+                    command.Parameters.Add("@kmPercorsi", OleDbType.Integer).Value = kmPercorsi;
+                    command.Parameters.Add("@colore", OleDbType.VarChar, 25).Value = colore;
+                    command.Parameters.Add("@isKm0", OleDbType.VarChar, 3).Value = km0;
+                    command.Parameters.Add("@isUsato", OleDbType.VarChar, 3).Value = usato;
+                    command.Parameters.Add("@info", OleDbType.VarChar, 255).Value = info;
+                    command.Parameters.Add("@prezzo", OleDbType.Integer).Value = prezzo;
 
                     command.Prepare();
                     command.ExecuteNonQuery();
@@ -254,13 +332,21 @@ namespace venditaVeicoliDLLProject
                         OleDbCommand command = new OleDbCommand();
                         command.Connection = connection;
 
-                        string SQLquery = $"DELETE FROM veicoli WHERE id={id};";
-                        command.CommandText = SQLquery;
+                            string SQLquery = $"DELETE FROM veicoli WHERE id={id};";
+                            command.CommandText = SQLquery;
 
-                        command.Prepare();
-                        command.ExecuteNonQuery();
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        return "Done";
+                        if (IDexitence(connectionStr, id))
+                        {
+                            command.Prepare();
+                            command.ExecuteNonQuery();
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            return "\nRECORD ELIMINATO";
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            return "\n!!il record non esiste nella tabella!!".ToUpper();
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -275,49 +361,58 @@ namespace venditaVeicoliDLLProject
                 return "\n!!ERROR!!";
             }
         }
-        public static void datapass(string connectionStr, SerializableBindingList<veicolo> listveicolo,int[] iDs)
+        public static string datapass(string connectionStr, SerializableBindingList<veicolo> listveicolo,int[] iDs)
         {
-            if (connectionStr != null)
+            try
             {
-                OleDbConnection connection = new OleDbConnection(connectionStr);
-                using (connection)
+                if (connectionStr != null)
                 {
-                    connection.Open();
-                    OleDbCommand command = new OleDbCommand("SELECT * FROM veicoli", connection);
-                    OleDbDataReader reader = command.ExecuteReader();
+                    OleDbConnection connection = new OleDbConnection(connectionStr);
+                    using (connection)
+                    {
+                        connection.Open();
+                        OleDbCommand command = new OleDbCommand("SELECT * FROM veicoli", connection);
+                        OleDbDataReader reader = command.ExecuteReader();
 
-                    listveicolo.Clear();
-                    Array.Clear(iDs, 0, iDs.Length);
-                    if (reader.HasRows)
-                    { 
-                        int i = 0;
-                        while (reader.Read()) { 
-                            if (reader.GetString(1) == "auto")
+                        listveicolo.Clear();
+                        Array.Clear(iDs, 0, iDs.Length);
+                        if (reader.HasRows)
+                        {
+                            int i = 0;
+                            while (reader.Read())
                             {
-                                iDs[i] = reader.GetInt32(0);
-                                listveicolo.Add(new auto(reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetDouble(5), reader.GetDateTime(6), reader.GetInt32(7), reader.GetString(8), reader.GetString(9) == "SI" ? true : false, reader.GetString(10) == "SI" ? true : false, reader.GetInt32(12), reader.GetString(11)));
+                                if (reader.GetString(1) == "auto")
+                                {
+                                    iDs[i] = reader.GetInt32(0);
+                                    listveicolo.Add(new auto(reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetDouble(5), reader.GetDateTime(6), reader.GetInt32(7), reader.GetString(8), reader.GetString(9) == "SI" ? true : false, reader.GetString(10) == "SI" ? true : false, reader.GetInt32(12), reader.GetString(11)));
+                                }
+                                else
+                                {
+                                    iDs[i] = reader.GetInt32(0);
+                                    listveicolo.Add(new moto(reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetDouble(5), reader.GetDateTime(6), reader.GetInt32(7), reader.GetString(8), reader.GetString(9) == "SI" ? true : false, reader.GetString(10) == "SI" ? true : false, reader.GetInt32(12), reader.GetString(11)));
+                                }
+                                i++;
+                                //    Marca: {reader.GetString(2)};
+                                //    Modello: {reader.GetString(3)};
+                                //    Cilindrata: {reader.GetInt32(4)};
+                                //    Potenza(KW): {reader.GetDouble(5)};
+                                //    Data Immatricolazione: {reader.GetDateTime(6).ToShortDateString()};
+                                //    Chilometri percorsi: {reader.GetInt32(7)};
+                                //    Colore: {reader.GetString(8)};
+                                //    Usato: {reader.GetString(9)};
+                                //    Km0: {reader.GetString(10)};
+                                //    Informazioni: {reader.GetString(11)};
+                                //    Prezzo: {reader.GetInt32(12)};
                             }
-                            else
-                            {
-                                iDs[i] = reader.GetInt32(0);
-                                listveicolo.Add(new moto(reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetDouble(5), reader.GetDateTime(6), reader.GetInt32(7), reader.GetString(8), reader.GetString(9) == "SI" ? true : false, reader.GetString(10) == "SI" ? true : false, reader.GetInt32(12), reader.GetString(11)));
-                            }
-                        i++;
-                        //    Marca: {reader.GetString(2)};
-                        //    Modello: {reader.GetString(3)};
-                        //    Cilindrata: {reader.GetInt32(4)};
-                        //    Potenza(KW): {reader.GetDouble(5)};
-                        //    Data Immatricolazione: {reader.GetDateTime(6).ToShortDateString()};
-                        //    Chilometri percorsi: {reader.GetInt32(7)};
-                        //    Colore: {reader.GetString(8)};
-                        //    Usato: {reader.GetString(9)};
-                        //    Km0: {reader.GetString(10)};
-                        //    Informazioni: {reader.GetString(11)};
-                        //    Prezzo: {reader.GetInt32(12)};
                         }
+                        reader.Close();
                     }
-                    reader.Close();
                 }
+                return "DONE";
+            }
+            catch (Exception ex)
+            {
+                return "\n!!ERROR!! "+ex.Message;
             }
         }
 
