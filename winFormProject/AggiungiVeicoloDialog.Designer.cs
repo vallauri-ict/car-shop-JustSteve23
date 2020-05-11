@@ -89,7 +89,7 @@
             this.btnAnnulla.Name = "btnAnnulla";
             this.btnAnnulla.Size = new System.Drawing.Size(178, 54);
             this.btnAnnulla.TabIndex = 2;
-            this.btnAnnulla.Text = "Annulla";
+            this.btnAnnulla.Text = "Chiudi";
             this.btnAnnulla.UseVisualStyleBackColor = true;
             this.btnAnnulla.Click += new System.EventHandler(this.btnAnnulla_Click);
             // 

@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtV = new System.Windows.Forms.TextBox();
             this.btnModifica = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nud)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +70,7 @@
             this.rtb.Location = new System.Drawing.Point(527, 36);
             this.rtb.Name = "rtb";
             this.rtb.ReadOnly = true;
-            this.rtb.Size = new System.Drawing.Size(244, 383);
+            this.rtb.Size = new System.Drawing.Size(244, 402);
             this.rtb.TabIndex = 3;
             this.rtb.Text = "";
             // 
@@ -91,19 +92,31 @@
             // 
             // btnModifica
             // 
-            this.btnModifica.Location = new System.Drawing.Point(163, 326);
+            this.btnModifica.Location = new System.Drawing.Point(40, 312);
             this.btnModifica.Name = "btnModifica";
-            this.btnModifica.Size = new System.Drawing.Size(181, 77);
+            this.btnModifica.Size = new System.Drawing.Size(441, 77);
             this.btnModifica.TabIndex = 6;
             this.btnModifica.Text = "Modifica campo";
             this.btnModifica.UseVisualStyleBackColor = true;
             this.btnModifica.Click += new System.EventHandler(this.btnModifica_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Red;
+            this.btnClose.Location = new System.Drawing.Point(40, 411);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(441, 43);
+            this.btnClose.TabIndex = 7;
+            this.btnClose.Text = "Chiudi";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // frmModifica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 466);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnModifica);
             this.Controls.Add(this.txtV);
             this.Controls.Add(this.label3);
@@ -130,5 +143,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtV;
         private System.Windows.Forms.Button btnModifica;
+        private System.Windows.Forms.Button btnClose;
     }
 }

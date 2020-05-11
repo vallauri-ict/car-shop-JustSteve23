@@ -35,7 +35,10 @@ namespace winFormProject
         private void CaricaDatiDiTesto()
         {
             dgv.Rows.Clear();
-            DB.datapass(connectionStr, listVeicolo, iDs);
+            string ctrlDatapassEXVAR = DB.datapass(connectionStr, listVeicolo, iDs);
+            if (ctrlDatapassEXVAR != "DONE")
+                MessageBox.Show(ctrlDatapassEXVAR);
+
             int rowN = 0;
             foreach (var item in listVeicolo)
             {

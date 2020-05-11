@@ -1,2 +1,6 @@
-numero airbag 8|Ferrari|F8 Triturbo|4000|589,24|08/10/2019 00:00:00|0|Rosso|False|False|400000
-Marca sella BMWStock|BMW|S1000RR|1100|150|08/10/2019 00:00:00|0|Bianco|False|False|34000
+numero airbag 8|Ferrari|488Pista|4000|589,24|08/10/2019 00:00:00|0|Rosso|False|False|400000
+numero airbag 12|Ferrari|F8 Triturbo|3500|598,99|10/01/2020 00:00:00|0|Rosso|False|False|380000
+Marca sella BMWStock|BMW|S1000RR|1100|150|08/10/2019 00:00:00|0|Bianco|False|False|29999
+marca sella Marca sella|Kawasaki|Ninja|1200|270|01/05/2020 16:56:57|0|Bianco|True|False|40000
+numero airbag 14|Porsche|911 S|3000|350|11/12/2019 16:56:57|0|Giallo|False|False|190000
+numero airbag 18|Tesla|Model 3|0|300|25/12/2019 17:03:52|80000|Nero|False|True|50000

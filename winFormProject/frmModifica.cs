@@ -36,7 +36,12 @@ namespace winFormProject
 
         private void btnModifica_Click(object sender, EventArgs e)
         {
-            DB.updateVehicle(connectionStr,id.ToString(),DBFieldArray[Convert.ToInt32(nud.Value)],txtV.Text,Convert.ToInt32(nud.Value));
+            MessageBox.Show((DB.updateVehicle(connectionStr,id.ToString(),DBFieldArray[Convert.ToInt32(nud.Value)],txtV.Text,Convert.ToInt32(nud.Value))));
+            txtV.Clear();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

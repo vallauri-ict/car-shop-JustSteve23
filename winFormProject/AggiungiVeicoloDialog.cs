@@ -47,6 +47,19 @@ namespace winFormProject
         private void btnAggiungi_Click(object sender, EventArgs e)
         {
             MessageBox.Show(DB.addVehicle(connectionStr,cmbTipoVeicolo.SelectedItem.ToString(),cmbMarca.SelectedItem.ToString(),txtModello.Text,int.Parse(txtCilindrata.Text),double.Parse(txtPotenza.Text),Convert.ToDateTime(dtpImm.Value),Convert.ToInt32(nudMP.Value),cmbColor.SelectedItem.ToString(),cbUsato.Checked ? "SI" : "NO",cbKmZero.Checked ? "SI" : "NO",cmbTipoVeicolo.SelectedItem.ToString()=="auto".ToLower() ? "numero airbag "+Convert.ToInt32(nudNumeroAirBag.Value) : "marca sella "+lblMarcaSella.Text,int.Parse(txtPrezzo.Text)));
+            tbMarcaSella.Clear();
+            txtCilindrata.Clear();
+            txtModello.Clear();
+            txtPotenza.Clear();
+            txtPrezzo.Clear();
+            dtpImm.Value = DateTime.Today;
+            cbKmZero.Checked = false;
+            cbUsato.Checked = false;
+            nudMP.Value = nudMP.Minimum;
+            nudNumeroAirBag.Value = nudNumeroAirBag.Minimum;
+            cmbColor.SelectedIndex = 0;
+            cmbMarca.SelectedIndex = 0;
+            cmbTipoVeicolo.SelectedIndex = 0;
             //if (cmbTipoVeicolo.SelectedIndex == 0)
             //    listVeicolo.Add(new auto(cmbMarca.SelectedItem.ToString(),txtModello.Text,int.Parse(txtCilindrata.Text) ,int.Parse(txtPotenza.Text),dtpImm.Value,Convert.ToInt32(nudMP.Value), cmbColor.SelectedItem.ToString(), cbUsato.Checked,cbKmZero.Checked,Convert.ToInt64(txtPrezzo.Text) ,Convert.ToString(nudNumeroAirBag.Value)));
             //else

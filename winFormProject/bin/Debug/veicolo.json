@@ -2,7 +2,7 @@
   {
     "NumairBag": "numero airbag 8",
     "Marca": "Ferrari",
-    "Modello": "F8 Triturbo",
+    "Modello": "488Pista",
     "Cilindrata": 4000,
     "PotenzaKw": 589.24,
     "Immatricolazione": "2019-10-08T00:00:00",
@@ -11,6 +11,19 @@
     "IsUsato": false,
     "IsKmZero": false,
     "Prezzo": 400000.0
+  },
+  {
+    "NumairBag": "numero airbag 12",
+    "Marca": "Ferrari",
+    "Modello": "F8 Triturbo",
+    "Cilindrata": 3500,
+    "PotenzaKw": 598.99,
+    "Immatricolazione": "2020-01-10T00:00:00",
+    "KmPercorsi": 0,
+    "Colore": "Rosso",
+    "IsUsato": false,
+    "IsKmZero": false,
+    "Prezzo": 380000.0
   },
   {
     "MarcaSella": "Marca sella BMWStock",
@@ -23,6 +36,45 @@
     "Colore": "Bianco",
     "IsUsato": false,
     "IsKmZero": false,
-    "Prezzo": 34000.0
+    "Prezzo": 29999.0
+  },
+  {
+    "MarcaSella": "marca sella Marca sella",
+    "Marca": "Kawasaki",
+    "Modello": "Ninja",
+    "Cilindrata": 1200,
+    "PotenzaKw": 270.0,
+    "Immatricolazione": "2020-05-01T16:56:57",
+    "KmPercorsi": 0,
+    "Colore": "Bianco",
+    "IsUsato": true,
+    "IsKmZero": false,
+    "Prezzo": 40000.0
+  },
+  {
+    "NumairBag": "numero airbag 14",
+    "Marca": "Porsche",
+    "Modello": "911 S",
+    "Cilindrata": 3000,
+    "PotenzaKw": 350.0,
+    "Immatricolazione": "2019-12-11T16:56:57",
+    "KmPercorsi": 0,
+    "Colore": "Giallo",
+    "IsUsato": false,
+    "IsKmZero": false,
+    "Prezzo": 190000.0
+  },
+  {
+    "NumairBag": "numero airbag 18",
+    "Marca": "Tesla",
+    "Modello": "Model 3",
+    "Cilindrata": 0,
+    "PotenzaKw": 300.0,
+    "Immatricolazione": "2019-12-25T17:03:52",
+    "KmPercorsi": 80000,
+    "Colore": "Nero",
+    "IsUsato": false,
+    "IsKmZero": true,
+    "Prezzo": 50000.0
   }
 ]
