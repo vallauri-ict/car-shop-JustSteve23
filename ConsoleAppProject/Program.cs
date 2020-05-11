@@ -29,7 +29,7 @@ namespace ConsoleAppProject
                         Console.ForegroundColor = ConsoleColor.White;
                         System.Threading.Thread.Sleep(2000);
                         break;
-                    case "DT":
+                    case "DeleteTab":
                         Console.WriteLine(DB.dropTable(connectionStr));
                         Console.ForegroundColor = ConsoleColor.White;
                         System.Threading.Thread.Sleep(2000);
@@ -74,7 +74,9 @@ namespace ConsoleAppProject
                         System.Threading.Thread.Sleep(2000);
                         break;
                     case "UV":
-                        Console.WriteLine();
+                        try
+                        {
+                            Console.WriteLine();
                         for (int i = 0; i <DBFieldArray.Length; i++)
                         {
                             Console.WriteLine(i+"-> "+DBFieldArray[i]);
@@ -89,11 +91,18 @@ namespace ConsoleAppProject
                             Console.Write("Numero Relativo al Campo da Aggiornare-> ");
                         }
                         Console.Write("ID Campo da Aggiornare-> "); string ide = Console.ReadLine();
-                        Console.Write($"inseriere valore da aggiornare(Campo: {DBFieldArray[uField]})-> "); string toUpdate = Console.ReadLine(); 
+                        Console.Write($"inseriere valore da aggiornare(Campo: {DBFieldArray[uField]})-> "); string toUpdate = Console.ReadLine();
                         Console.WriteLine();
-                        Console.WriteLine(DB.updateVehicle(connectionStr, ide,DBFieldArray[uField],toUpdate,uField));
+                        Console.WriteLine(DB.updateVehicle(connectionStr, ide, DBFieldArray[uField], toUpdate, uField));
                         Console.ForegroundColor = ConsoleColor.White;
                         System.Threading.Thread.Sleep(2000);
+                        }
+                        catch (Exception)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\n!!ERROR!!");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                         break;
                     case "VT": DB.visualizeTableConsole(connectionStr); break;
                     case "EXIT": Console.ForegroundColor = ConsoleColor.Green; Console.Write("\nGOODBYE"); 
@@ -266,7 +275,7 @@ namespace ConsoleAppProject
             Console.WriteLine("\n ? -> VISUALIZZA INFORMAZIONI SUI COMANDI");
             Console.WriteLine(" Ginfo -> VISUALIZZA ALCUNE INFORMAZIONI SULLA SHELL");
             Console.WriteLine(" CT -> CREA LA TABELLA");
-            Console.WriteLine(" DT -> ELIMINA LA TABELLA");
+            Console.WriteLine(" DeleteTab -> ELIMINA LA TABELLA");
             Console.WriteLine(" AV -> AGGIUNGE UN VEICOLO ALLA TABELLA AUTOMOBLI");
             Console.WriteLine(" DV -> ELIMINA UN VEICOLO ALLA TABELLA AUTOMOBLI DATO IN IGRESSO L'IDENTIFICATORE");
             Console.WriteLine(" UV -> AGGIORNA UN CAMPO DI UNA RIGA");
