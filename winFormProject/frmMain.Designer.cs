@@ -36,7 +36,6 @@
             this.tlsBtnCaricaOnline = new System.Windows.Forms.ToolStripButton();
             this.tsbWordParse = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbEliminaVeicolo = new System.Windows.Forms.ToolStripButton();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,8 +58,7 @@
             this.toolStripSeparator2,
             this.tlsBtnCaricaOnline,
             this.tsbWordParse,
-            this.toolStripSeparator1,
-            this.tsbEliminaVeicolo});
+            this.toolStripSeparator1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
@@ -120,18 +118,11 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 42);
             // 
-            // tsbEliminaVeicolo
-            // 
-            this.tsbEliminaVeicolo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbEliminaVeicolo.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminaVeicolo.Image")));
-            this.tsbEliminaVeicolo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEliminaVeicolo.Name = "tsbEliminaVeicolo";
-            this.tsbEliminaVeicolo.Size = new System.Drawing.Size(180, 36);
-            this.tsbEliminaVeicolo.Text = "Elimina Veicolo";
-            // 
             // dgv
             // 
             this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToResizeColumns = false;
+            this.dgv.AllowUserToResizeRows = false;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.column1,
@@ -245,7 +236,6 @@
         private System.Windows.Forms.ToolStripButton salvaToolStripButton;
         private System.Windows.Forms.ToolStripButton tlsBtnCaricaOnline;
         private System.Windows.Forms.ToolStripButton tsbWordParse;
-        private System.Windows.Forms.ToolStripButton tsbEliminaVeicolo;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

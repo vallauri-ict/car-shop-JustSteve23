@@ -17,6 +17,7 @@ namespace winFormProject
     {
         int id;
         int[] iDs = new int[10000];
+        string[] imgs = new string[10000];
         SerializableBindingList<veicolo> l;
         public frmDettagli(int id,int[] iDs,SerializableBindingList<veicolo> lstVeicoli)
         {
@@ -26,7 +27,6 @@ namespace winFormProject
             this.iDs = iDs;
         }
 
-        string[] imgs = new string[10000];
         private void frmDettagli_Load(object sender, EventArgs e)
         {
             tbID.Text = id.ToString();

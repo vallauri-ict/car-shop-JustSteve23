@@ -46,7 +46,7 @@ namespace winFormProject
 
         private void btnAggiungi_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(DB.addVehicle(connectionStr,cmbTipoVeicolo.SelectedItem.ToString(),cmbMarca.SelectedItem.ToString(),txtModello.Text,int.Parse(txtCilindrata.Text),double.Parse(txtPotenza.Text),Convert.ToDateTime(dtpImm.Value),Convert.ToInt32(nudMP.Value),cmbColor.SelectedItem.ToString(),cbUsato.Checked ? "SI" : "NO",cbKmZero.Checked ? "SI" : "NO",cmbTipoVeicolo.SelectedItem.ToString()=="auto".ToLower() ? "numero airbag "+Convert.ToInt32(nudNumeroAirBag.Value) : "marca sella "+lblMarcaSella.Text,int.Parse(txtPrezzo.Text)));
+            MessageBox.Show(DB.addVehicle(connectionStr,cmbTipoVeicolo.SelectedItem.ToString(),cmbMarca.SelectedItem.ToString(),txtModello.Text,int.Parse(txtCilindrata.Text),double.Parse(txtPotenza.Text),Convert.ToDateTime(dtpImm.Value),Convert.ToInt32(nudMP.Value),cmbColor.SelectedItem.ToString(),cbUsato.Checked ? "SI" : "NO",cbKmZero.Checked ? "SI" : "NO",cmbTipoVeicolo.SelectedItem.ToString()=="auto".ToLower() ? "numero airbag "+Convert.ToInt32(nudNumeroAirBag.Value) : "marca sella "+tbMarcaSella.Text,int.Parse(txtPrezzo.Text)));
             tbMarcaSella.Clear();
             txtCilindrata.Clear();
             txtModello.Clear();

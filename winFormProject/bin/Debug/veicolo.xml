@@ -1,94 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfVeicolo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <veicolo xsi:type="moto">
-    <Marca>Ducati</Marca>
-    <Modello>Panigale V4R</Modello>
-    <Cilindrata>1000</Cilindrata>
-    <PotenzaKw>75</PotenzaKw>
-    <Immatricolazione>2020-04-24T08:41:03.1646009+02:00</Immatricolazione>
-    <KmPercorsi>0</KmPercorsi>
-    <Colore>blu</Colore>
-    <IsUsato>false</IsUsato>
-    <IsKmZero>false</IsKmZero>
-    <Prezzo>10000</Prezzo>
-    <MarcaSella>StandarCO</MarcaSella>
-  </veicolo>
   <veicolo xsi:type="auto">
-    <Marca>Alfa Romeo</Marca>
-    <Modello>Stelvio</Modello>
-    <Cilindrata>2000</Cilindrata>
-    <PotenzaKw>150</PotenzaKw>
-    <Immatricolazione>2020-04-24T08:41:03.2273555+02:00</Immatricolazione>
+    <Marca>Ferrari</Marca>
+    <Modello>488Pista</Modello>
+    <Cilindrata>4000</Cilindrata>
+    <PotenzaKw>589.24</PotenzaKw>
+    <Immatricolazione>2019-10-08T00:00:00</Immatricolazione>
     <KmPercorsi>0</KmPercorsi>
-    <Colore>rosso</Colore>
+    <Colore>Rosso</Colore>
     <IsUsato>false</IsUsato>
     <IsKmZero>false</IsKmZero>
-    <Prezzo>35000</Prezzo>
-    <NumairBag>8</NumairBag>
+    <Prezzo>400000</Prezzo>
+    <NumairBag>numero airbag 8</NumairBag>
   </veicolo>
   <veicolo xsi:type="auto">
     <Marca>Ferrari</Marca>
-    <Modello>SF90Stradale</Modello>
-    <Cilindrata>5000</Cilindrata>
-    <PotenzaKw>800</PotenzaKw>
-    <Immatricolazione>2020-04-24T08:41:03.2273555+02:00</Immatricolazione>
+    <Modello>F8 Triturbo</Modello>
+    <Cilindrata>4000</Cilindrata>
+    <PotenzaKw>459</PotenzaKw>
+    <Immatricolazione>2020-10-01T00:00:00</Immatricolazione>
     <KmPercorsi>0</KmPercorsi>
-    <Colore>rosso</Colore>
+    <Colore>Blu</Colore>
     <IsUsato>false</IsUsato>
     <IsKmZero>false</IsKmZero>
-    <Prezzo>500000</Prezzo>
-    <NumairBag>12</NumairBag>
+    <Prezzo>388999</Prezzo>
+    <NumairBag>numero airbag 12</NumairBag>
   </veicolo>
-  <veicolo xsi:type="auto">
-    <Marca>Bentley</Marca>
-    <Modello>Continental GT</Modello>
-    <Cilindrata>3500</Cilindrata>
-    <PotenzaKw>600</PotenzaKw>
-    <Immatricolazione>2020-04-24T08:41:03.2273555+02:00</Immatricolazione>
+  <veicolo xsi:type="moto">
+    <Marca>BMW</Marca>
+    <Modello>S1000RR</Modello>
+    <Cilindrata>1000</Cilindrata>
+    <PotenzaKw>150</PotenzaKw>
+    <Immatricolazione>2019-10-08T00:00:00</Immatricolazione>
     <KmPercorsi>0</KmPercorsi>
-    <Colore>nero</Colore>
+    <Colore>Bianco</Colore>
     <IsUsato>false</IsUsato>
     <IsKmZero>false</IsKmZero>
-    <Prezzo>200000</Prezzo>
-    <NumairBag>14</NumairBag>
+    <Prezzo>29999</Prezzo>
+    <MarcaSella>Marca sella BMWStock</MarcaSella>
   </veicolo>
   <veicolo xsi:type="moto">
     <Marca>Yamaha</Marca>
     <Modello>R1</Modello>
     <Cilindrata>1000</Cilindrata>
-    <PotenzaKw>75</PotenzaKw>
-    <Immatricolazione>2020-04-24T08:41:03.2273555+02:00</Immatricolazione>
-    <KmPercorsi>0</KmPercorsi>
-    <Colore>blu</Colore>
+    <PotenzaKw>180</PotenzaKw>
+    <Immatricolazione>2018-02-15T18:49:24</Immatricolazione>
+    <KmPercorsi>67000</KmPercorsi>
+    <Colore>Grigio Antracite</Colore>
     <IsUsato>false</IsUsato>
-    <IsKmZero>false</IsKmZero>
-    <Prezzo>8500</Prezzo>
-    <MarcaSella>StandardCO</MarcaSella>
+    <IsKmZero>true</IsKmZero>
+    <Prezzo>32000</Prezzo>
+    <MarcaSella>marca sella RX</MarcaSella>
   </veicolo>
   <veicolo xsi:type="auto">
-    <Marca>BMW</Marca>
-    <Modello>M2 Competizione</Modello>
-    <Cilindrata>3000</Cilindrata>
-    <PotenzaKw>450</PotenzaKw>
-    <Immatricolazione>2020-04-24T08:41:03.2273555+02:00</Immatricolazione>
-    <KmPercorsi>0</KmPercorsi>
-    <Colore>bianco</Colore>
-    <IsUsato>false</IsUsato>
-    <IsKmZero>false</IsKmZero>
-    <Prezzo>66000</Prezzo>
-    <NumairBag>10</NumairBag>
-  </veicolo>
-  <veicolo xsi:type="auto">
-    <Marca>BMW</Marca>
-    <Modello>Z4</Modello>
+    <Marca>Ford</Marca>
+    <Modello>Mustang GT</Modello>
     <Cilindrata>3500</Cilindrata>
-    <PotenzaKw>200</PotenzaKw>
-    <Immatricolazione>2020-04-24T08:41:11.5867159+02:00</Immatricolazione>
-    <KmPercorsi>0</KmPercorsi>
-    <Colore>Blu</Colore>
+    <PotenzaKw>400</PotenzaKw>
+    <Immatricolazione>1985-02-14T00:00:00</Immatricolazione>
+    <KmPercorsi>100000</KmPercorsi>
+    <Colore>Nero</Colore>
     <IsUsato>false</IsUsato>
-    <IsKmZero>false</IsKmZero>
-    <Prezzo>50000</Prezzo>
-    <NumairBag>10</NumairBag>
+    <IsKmZero>true</IsKmZero>
+    <Prezzo>55000</Prezzo>
+    <NumairBag>numero airbag 8</NumairBag>
   </veicolo>
 </ArrayOfVeicolo>

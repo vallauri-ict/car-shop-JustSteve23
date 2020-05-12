@@ -21,6 +21,7 @@ namespace winFormProject
     {
     static string connectionStr = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName}\\DB\\Veicoli.accdb";
     SerializableBindingList<veicolo> listVeicolo;
+        int[] iDs = new int[10000];
         public frmMain()
         { 
             listVeicolo = new SerializableBindingList<veicolo>();
@@ -31,13 +32,16 @@ namespace winFormProject
             dgv.ClearSelection();
             CaricaDatiDiTesto();
         }
-        int[] iDs = new int[10000];
+
         private void CaricaDatiDiTesto()
         {
             dgv.Rows.Clear();
             string ctrlDatapassEXVAR = DB.datapass(connectionStr, listVeicolo, iDs);
             if (ctrlDatapassEXVAR != "DONE")
+            {
                 MessageBox.Show(ctrlDatapassEXVAR);
+                this.Close();
+            }
 
             int rowN = 0;
             foreach (var item in listVeicolo)
@@ -63,7 +67,7 @@ namespace winFormProject
         private void salvaToolStripButton_Click(object sender, EventArgs e)
         {
             Utilities.SerializeToCsv(listVeicolo, "./veicolo.csv");
-            //Utilities.SerializeToXml(listVeicolo, "./veicolo.xml");
+            Utilities.SerializeToXml(listVeicolo, "./veicolo.xml");
             Utilities.SerializeToJson(listVeicolo, "./veicolo.json");
         }
 
