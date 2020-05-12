@@ -16,6 +16,8 @@ namespace venditaVeicoliDLLProject
         {
             marcaSella = data[10];
         }
+
+        public moto() { }
         public string MarcaSella { get => marcaSella; set => marcaSella = value; }
 
         public override string ToString()

@@ -281,35 +281,43 @@ namespace venditaVeicoliDLLProject
         {
             if (connectionStr != null)
             {
-                OleDbConnection connection = new OleDbConnection(connectionStr);
-                using (connection)
+                try
                 {
-                    connection.Open();
-                    OleDbCommand command = new OleDbCommand();
-                    command.Connection = connection;
+                    OleDbConnection connection = new OleDbConnection(connectionStr);
+                    using (connection)
+                    {
+                        connection.Open();
+                        OleDbCommand command = new OleDbCommand();
+                        command.Connection = connection;
 
-                    //string SQLquery = $"INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES('{type}','{marca}','{modello}',{cilindrata},{kw},#{dImm.ToShortDateString()}#,{kmPercorsi},'{colore}','{usato}','{km0}','{info}',{prezzo});";
-                    string SQLquery = $"INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES(@type,@marca,@modello,@cilindrata,@potenzaKw,@dataimmatricolazione,@kmPercorsi,@colore,@isUsato,@isKm0,@info,@prezzo);";
-                    command.CommandText = SQLquery;
+                        //string SQLquery = $"INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES('{type}','{marca}','{modello}',{cilindrata},{kw},#{dImm.ToShortDateString()}#,{kmPercorsi},'{colore}','{usato}','{km0}','{info}',{prezzo});";
+                        string SQLquery = $"INSERT INTO veicoli(type,marca,modello,cilindrata,potenzaKw,dataimmatricolazione,kmPercorsi,colore,isUsato,isKm0,info,prezzo) VALUES(@type,@marca,@modello,@cilindrata,@potenzaKw,@dataimmatricolazione,@kmPercorsi,@colore,@isUsato,@isKm0,@info,@prezzo);";
+                        command.CommandText = SQLquery;
 
-                    command.Parameters.Add(new OleDbParameter("@type", OleDbType.VarChar, 10)).Value = type;
-                    command.Parameters.Add("@marca", OleDbType.VarChar, 255).Value = marca;
-                    command.Parameters.Add("@modello", OleDbType.VarChar, 255).Value = modello;
-                    command.Parameters.Add("@cilindrata", OleDbType.Integer).Value = cilindrata;
-                    command.Parameters.Add("@potenzaKw", OleDbType.Double).Value = kw;
-                    command.Parameters.Add("@dataimmatricolazione", OleDbType.Date).Value = dImm;
-                    command.Parameters.Add("@kmPercorsi", OleDbType.Integer).Value = kmPercorsi;
-                    command.Parameters.Add("@colore", OleDbType.VarChar, 25).Value = colore;
-                    command.Parameters.Add("@isKm0", OleDbType.VarChar, 3).Value = km0;
-                    command.Parameters.Add("@isUsato", OleDbType.VarChar, 3).Value = usato;
-                    command.Parameters.Add("@info", OleDbType.VarChar, 255).Value = info;
-                    command.Parameters.Add("@prezzo", OleDbType.Integer).Value = prezzo;
+                        command.Parameters.Add(new OleDbParameter("@type", OleDbType.VarChar, 10)).Value = type;
+                        command.Parameters.Add(new OleDbParameter("@marca", OleDbType.VarChar, 255)).Value = marca;
+                        command.Parameters.Add(new OleDbParameter("@modello", OleDbType.VarChar, 255)).Value = modello;
+                        command.Parameters.Add(new OleDbParameter("@cilindrata", OleDbType.Integer)).Value = cilindrata;
+                        command.Parameters.Add(new OleDbParameter("@potenzaKw", OleDbType.Double)).Value = kw;
+                        command.Parameters.Add(new OleDbParameter("@dataimmatricolazione", OleDbType.Date)).Value = dImm;
+                        command.Parameters.Add(new OleDbParameter("@kmPercorsi", OleDbType.Integer)).Value = kmPercorsi;
+                        command.Parameters.Add(new OleDbParameter("@colore", OleDbType.VarChar, 25)).Value = colore;
+                        command.Parameters.Add(new OleDbParameter("@isKm0", OleDbType.VarChar, 3)).Value = km0;
+                        command.Parameters.Add(new OleDbParameter("@isUsato", OleDbType.VarChar, 3)).Value = usato;
+                        command.Parameters.Add(new OleDbParameter("@info", OleDbType.VarChar, 255)).Value = info;
+                        command.Parameters.Add(new OleDbParameter("@prezzo", OleDbType.Integer)).Value = prezzo;
 
-                    command.Prepare();
-                    command.ExecuteNonQuery();
+                        command.Prepare();
+                        command.ExecuteNonQuery();
 
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    return "\nVeicolo inserito correttamente!!";
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        return "\nVeicolo inserito correttamente!!";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    return "\n!!ERROR!! "+ex.Message;
                 }
             }
             else

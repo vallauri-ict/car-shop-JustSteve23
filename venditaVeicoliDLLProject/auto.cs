@@ -19,6 +19,9 @@ namespace venditaVeicoliDLLProject
         {
             numairBag = data[10];
         }
+
+        public auto() { }
+
         public string NumairBag { get => numairBag; set => numairBag = value; }
 
         public override string ToString()
