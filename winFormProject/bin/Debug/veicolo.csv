@@ -1,5 +1,6 @@
-numero airbag 8|Ferrari|488Pista|4000|589,24|08/10/2019 00:00:00|0|Rosso|False|False|400000
+numero airbag 12|Ferrari|488Pista|4000|589,24|08/10/2019 00:00:00|120000|Rosso|False|False|400000
 numero airbag 12|Ferrari|F8 Triturbo|4000|459|01/10/2020 00:00:00|0|Blu|False|False|388999
 Marca sella BMWStock|BMW|S1000RR|1000|150|08/10/2019 00:00:00|0|Bianco|False|False|29999
-marca sella RX|Yamaha|R1|1000|180|15/02/2018 18:49:24|67000|Grigio Antracite|False|True|32000
-numero airbag 8|Ford|Mustang GT|3500|400|14/02/1985 00:00:00|100000|Nero|False|True|55000
+marca sella RX|Yamaha|R1|1000|180|10/10/2018 00:00:00|67000|Grigio Antracite|False|True|32000
+numero airbag 8|Ford|Mustang GT|3500|400|14/02/1985 00:00:00|120000|Nero|True|False|55000
+numero airbag 18|Honda|NSX|3000|450|14/05/2020 15:52:18|0|Blu|False|False|120000

@@ -36,6 +36,8 @@
             this.txtV = new System.Windows.Forms.TextBox();
             this.btnModifica = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nud)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 147);
+            this.label2.Location = new System.Drawing.Point(35, 165);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(289, 25);
             this.label2.TabIndex = 1;
@@ -60,7 +62,7 @@
             // 
             // nud
             // 
-            this.nud.Location = new System.Drawing.Point(361, 145);
+            this.nud.Location = new System.Drawing.Point(361, 163);
             this.nud.Name = "nud";
             this.nud.Size = new System.Drawing.Size(120, 31);
             this.nud.TabIndex = 2;
@@ -103,19 +105,38 @@
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.Red;
-            this.btnClose.Location = new System.Drawing.Point(40, 411);
+            this.btnClose.Location = new System.Drawing.Point(40, 395);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(441, 43);
+            this.btnClose.Size = new System.Drawing.Size(441, 59);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Chiudi";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(35, 116);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(265, 25);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "ID veiocolo da modificare: ";
+            // 
+            // tbID
+            // 
+            this.tbID.Location = new System.Drawing.Point(306, 116);
+            this.tbID.Name = "tbID";
+            this.tbID.ReadOnly = true;
+            this.tbID.Size = new System.Drawing.Size(120, 31);
+            this.tbID.TabIndex = 9;
             // 
             // frmModifica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 466);
+            this.Controls.Add(this.tbID);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnModifica);
             this.Controls.Add(this.txtV);
@@ -128,6 +149,7 @@
             this.Name = "frmModifica";
             this.Text = "frmModifica";
             this.Load += new System.EventHandler(this.frmModifica_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmModifica_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.nud)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -144,5 +166,7 @@
         private System.Windows.Forms.TextBox txtV;
         private System.Windows.Forms.Button btnModifica;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbID;
     }
 }

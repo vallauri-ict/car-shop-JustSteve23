@@ -29,6 +29,7 @@ namespace winFormProject
 
         private void frmDettagli_Load(object sender, EventArgs e)
         {
+            KeyPreview = true;
             tbID.Text = id.ToString();
 
             int i = 0;
@@ -58,6 +59,14 @@ namespace winFormProject
                 else
                     i++;
 
+            }
+        }
+
+        private void frmDettagli_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Escape || e.KeyCode==Keys.Enter)
+            {
+                this.Close();
             }
         }
     }

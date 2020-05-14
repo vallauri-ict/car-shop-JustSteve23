@@ -62,7 +62,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.toolStrip1.Size = new System.Drawing.Size(2956, 42);
+            this.toolStrip1.Size = new System.Drawing.Size(3096, 42);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -139,7 +139,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowHeadersWidth = 82;
             this.dgv.RowTemplate.Height = 33;
-            this.dgv.Size = new System.Drawing.Size(2956, 1228);
+            this.dgv.Size = new System.Drawing.Size(3096, 1228);
             this.dgv.TabIndex = 2;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             // 
@@ -157,7 +157,6 @@
             this.Column3.MinimumWidth = 10;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 200;
             // 
             // Column4
             // 
@@ -165,7 +164,6 @@
             this.Column4.MinimumWidth = 10;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
-            this.Column4.Width = 200;
             // 
             // Column9
             // 
@@ -181,7 +179,6 @@
             this.Column13.MinimumWidth = 10;
             this.Column13.Name = "Column13";
             this.Column13.ReadOnly = true;
-            this.Column13.Width = 200;
             // 
             // Column5
             // 
@@ -214,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2956, 1270);
+            this.ClientSize = new System.Drawing.Size(3096, 1270);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -222,6 +219,7 @@
             this.Name = "frmMain";
             this.Text = "Car shop";
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyDown);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();

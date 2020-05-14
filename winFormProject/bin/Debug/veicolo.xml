@@ -6,12 +6,12 @@
     <Cilindrata>4000</Cilindrata>
     <PotenzaKw>589.24</PotenzaKw>
     <Immatricolazione>2019-10-08T00:00:00</Immatricolazione>
-    <KmPercorsi>0</KmPercorsi>
+    <KmPercorsi>120000</KmPercorsi>
     <Colore>Rosso</Colore>
     <IsUsato>false</IsUsato>
     <IsKmZero>false</IsKmZero>
     <Prezzo>400000</Prezzo>
-    <NumairBag>numero airbag 8</NumairBag>
+    <NumairBag>numero airbag 12</NumairBag>
   </veicolo>
   <veicolo xsi:type="auto">
     <Marca>Ferrari</Marca>
@@ -44,7 +44,7 @@
     <Modello>R1</Modello>
     <Cilindrata>1000</Cilindrata>
     <PotenzaKw>180</PotenzaKw>
-    <Immatricolazione>2018-02-15T18:49:24</Immatricolazione>
+    <Immatricolazione>2018-10-10T00:00:00</Immatricolazione>
     <KmPercorsi>67000</KmPercorsi>
     <Colore>Grigio Antracite</Colore>
     <IsUsato>false</IsUsato>
@@ -58,11 +58,24 @@
     <Cilindrata>3500</Cilindrata>
     <PotenzaKw>400</PotenzaKw>
     <Immatricolazione>1985-02-14T00:00:00</Immatricolazione>
-    <KmPercorsi>100000</KmPercorsi>
+    <KmPercorsi>120000</KmPercorsi>
     <Colore>Nero</Colore>
-    <IsUsato>false</IsUsato>
-    <IsKmZero>true</IsKmZero>
+    <IsUsato>true</IsUsato>
+    <IsKmZero>false</IsKmZero>
     <Prezzo>55000</Prezzo>
     <NumairBag>numero airbag 8</NumairBag>
+  </veicolo>
+  <veicolo xsi:type="auto">
+    <Marca>Honda</Marca>
+    <Modello>NSX</Modello>
+    <Cilindrata>3000</Cilindrata>
+    <PotenzaKw>450</PotenzaKw>
+    <Immatricolazione>2020-05-14T15:52:18.803</Immatricolazione>
+    <KmPercorsi>0</KmPercorsi>
+    <Colore>Blu</Colore>
+    <IsUsato>false</IsUsato>
+    <IsKmZero>false</IsKmZero>
+    <Prezzo>120000</Prezzo>
+    <NumairBag>numero airbag 18</NumairBag>
   </veicolo>
 </ArrayOfVeicolo>

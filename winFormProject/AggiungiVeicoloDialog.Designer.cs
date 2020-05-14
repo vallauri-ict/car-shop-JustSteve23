@@ -331,6 +331,7 @@
             this.Name = "AggiungiVeicoloDialog";
             this.Text = "AggiungiVeicolo";
             this.Load += new System.EventHandler(this.AggiungiVeicoloDialog_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AggiungiVeicoloDialog_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.nudMP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumeroAirBag)).EndInit();
             this.ResumeLayout(false);

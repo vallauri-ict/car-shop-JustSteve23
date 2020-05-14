@@ -29,6 +29,7 @@ namespace winFormProject
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            KeyPreview = true;
             dgv.ClearSelection();
             CaricaDatiDiTesto();
         }
@@ -96,16 +97,18 @@ namespace winFormProject
         {
             if (((DataGridView)sender).Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex>=0 && e.ColumnIndex==6)
             {
-                frmDettagli FRD = new frmDettagli(iDs[e.RowIndex],iDs,listVeicolo);
-                FRD.ShowDialog();
+                ShowFormDettagli(e.RowIndex);
             }
 
             if (((DataGridView)sender).Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 7)
             {
                 try
                 {
-                    DB.deleteVehicle(connectionStr, iDs[e.RowIndex]);
-                    CaricaDatiDiTesto();
+                    DialogResult result = MessageBox.Show("Vuoi eliminare l'elemento","Attenzione!",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                    if (result==DialogResult.Yes) {
+                        DB.deleteVehicle(connectionStr, iDs[e.RowIndex]);
+                        CaricaDatiDiTesto();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -113,11 +116,49 @@ namespace winFormProject
                 }
             }
             if (((DataGridView)sender).Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 5)
-            {
-                frmModifica FMD = new frmModifica(iDs[e.RowIndex]);
-                FMD.ShowDialog();
-                CaricaDatiDiTesto();
+            { 
+                ShowFormMOD(e.RowIndex);
             }
+        }
+
+        private void frmMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            int x;
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    x = int.Parse(Interaction.InputBox("Inserisci ID da modificare")) - 1;
+                    if (DB.IDexitence(connectionStr, x + 1))
+                        ShowFormMOD(x);
+                    else
+                        MessageBox.Show("ID inesistente");
+                }
+                if (e.KeyCode == Keys.F2)
+                {
+                    x = int.Parse(Interaction.InputBox("Inserisci ID di cui modificare i dettagli")) - 1;
+                    if (DB.IDexitence(connectionStr, x + 1))
+                        ShowFormDettagli(x);
+                    else
+                        MessageBox.Show("ID inesistente");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("!!ERROR!!\n"+ex.Message);
+            }
+        }
+
+        private void ShowFormDettagli(int e)
+        {
+            frmDettagli FRD = new frmDettagli(iDs[e], iDs, listVeicolo);
+            FRD.ShowDialog();
+        }
+        private void ShowFormMOD(int e)
+        {
+            frmModifica FMD = new frmModifica(iDs[e]);
+            FMD.ShowDialog();
+            CaricaDatiDiTesto();
         }
     }
 }

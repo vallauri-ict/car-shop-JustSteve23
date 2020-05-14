@@ -3,14 +3,12 @@
 }
 
 #wrapper div {
-    margin-bottom: 3px;
     border: 1px solid black;
-    width: 350px;
-    height: 40px;
-    margin: 0 auto;
+    width: 250px;
+    height: auto;
+    margin: 5px auto;
 }
 
 #wrapper div span {
-    margin: 0 auto;
-    margin-left:130px;
+    margin-left:30px;
 }

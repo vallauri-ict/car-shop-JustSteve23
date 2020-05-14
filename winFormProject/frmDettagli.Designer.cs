@@ -324,6 +324,7 @@
             this.Name = "frmDettagli";
             this.Text = "frmDettagli";
             this.Load += new System.EventHandler(this.frmDettagli_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDettagli_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
