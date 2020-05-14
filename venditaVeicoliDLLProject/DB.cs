@@ -247,7 +247,7 @@ namespace venditaVeicoliDLLProject
             }
         }
 
-        private static bool IDexitence(string connectionStr, int id)
+        public static bool IDexitence(string connectionStr, int id)
         {
             bool flag = false;
             if (connectionStr != null)

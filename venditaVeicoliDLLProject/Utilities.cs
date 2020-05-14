@@ -70,7 +70,14 @@ namespace venditaVeicoliDLLProject
 
             foreach (var item in objList)
             {
-                _div += $"<div><span>{(item as veicolo).Marca}</span> <br> <span>{(item as veicolo).Modello}</span></div>";
+                _div += $"<div><span>Marca: <strong>{(item as veicolo).Marca}</strong></span> <br> " +
+                    $"<span>Modello: <strong>{(item as veicolo).Modello}</strong></span> <br>" +
+                    $"<span>Cilindrata: <strong>{(item as veicolo).Cilindrata}</strong></span> <br>" +
+                    $"<span>Potenza: <strong>{(item as veicolo).PotenzaKw}</strong></span> <br>" +
+                    $"<span>Colore: <strong>{(item as veicolo).Colore}</strong></span> <br>" +
+                    $"<span>Immatricolazione: <strong>{(item as veicolo).Immatricolazione.ToShortDateString()}</strong></span> <br>" +
+                    $"<span>Prezzo: <strong>{(item as veicolo).Prezzo}$</strong></span> <br>" +
+                    $"</div>";
             }
             html = html.Replace("{{body-subtitle}}", "Veicoli");
             html = html.Replace("{{main-content}}", _div);
@@ -103,7 +110,7 @@ namespace venditaVeicoliDLLProject
                         type = "AUTO";
                     else
                         type = "MOTO";
-                    Paragraph newPar = createParagaph(type, item.Marca, item.Modello, item.Cilindrata.ToString(), item.PotenzaKw.ToString(), item.Prezzo);
+                    Paragraph newPar = createParagaph(type, item.Marca, item.Modello, item.Cilindrata.ToString(), item.PotenzaKw.ToString(), item.Prezzo,item.Colore,item.Immatricolazione);
                     body.AppendChild(newPar);
                 }
             }
@@ -129,7 +136,7 @@ namespace venditaVeicoliDLLProject
             return heading;
         }
 
-        private static Paragraph createParagaph(string tipo, string txtMarca, string txtModello, string txtCil, string txtPot, double prezzo)
+        private static Paragraph createParagaph(string tipo, string txtMarca, string txtModello, string txtCil, string txtPot, double prezzo,string colore,DateTime dimm)
         {
             Paragraph p = new Paragraph();
             // Set the paragraph properties
@@ -157,6 +164,12 @@ namespace venditaVeicoliDLLProject
             r2.AppendChild(new Text("   -MOTORIZZAZIONE: ") { Space = SpaceProcessingModeValues.Preserve });
             r2.AppendChild(new Break());
             r2.AppendChild(new Text("   -Potenza: " + txtPot + "kw   -Cilindrata: " + txtCil + " cm2") { Space = SpaceProcessingModeValues.Preserve });
+            r2.AppendChild(new Break());
+            r2.AppendChild(new Text("   -ESTETICA: ") {Space= SpaceProcessingModeValues.Preserve });
+            r2.AppendChild(new Break());
+            r2.AppendChild(new Text("   -Colore: "+colore) { Space = SpaceProcessingModeValues.Preserve });
+            r2.AppendChild(new Break());
+            r2.AppendChild(new Text("   -Immatricolazione: " + dimm.ToShortDateString()) { Space = SpaceProcessingModeValues.Preserve });
             r2.AppendChild(new Break());
             r2.AppendChild(new Text("  -Prezzo: " + prezzo + "$"));
             p.Append(r2);
